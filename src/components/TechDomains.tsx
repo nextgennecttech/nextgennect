@@ -44,7 +44,7 @@ export const TechDomains: React.FC<TechDomainsProps> = ({ onJoinTrack }) => {
   };
 
   return (
-    <section id="domains" className="py-24 relative overflow-hidden bg-slate-50/60 dark:bg-[#070B18] transition-colors duration-300">
+    <section id="domains" className="py-24 relative overflow-hidden bg-transparent transition-colors duration-300">
       {/* Background decorations */}
       <div className="absolute top-1/4 right-0 w-80 h-80 bg-indigo-500/5 dark:bg-cyan-500/5 rounded-full blur-3xl pointer-events-none" />
       <div className="absolute bottom-10 left-0 w-80 h-80 bg-purple-500/5 rounded-full blur-3xl pointer-events-none" />
@@ -65,13 +65,13 @@ export const TechDomains: React.FC<TechDomainsProps> = ({ onJoinTrack }) => {
           </p>
         </div>
 
-        {/* Category Filters */}
-        <div className="flex flex-wrap items-center justify-center gap-2">
+        {/* Category Filters - Fluid scrollable on mobile and centered on desktop */}
+        <div className="overflow-x-auto no-scrollbar py-1 flex sm:flex-wrap items-center justify-start sm:justify-center gap-1.5 sm:gap-2 px-1">
           {categories.map((cat) => (
             <button
               key={cat}
               onClick={() => setActiveCategory(cat)}
-              className={`px-4 py-2 rounded-full text-xs font-semibold tracking-wide transition-all ${
+              className={`px-3.5 sm:px-4 py-2 rounded-full text-xs font-semibold tracking-wide whitespace-nowrap transition-all ${
                 activeCategory === cat
                   ? 'bg-slate-900 dark:bg-[#00E5FF] text-white dark:text-black shadow-md font-bold'
                   : 'bg-white dark:bg-[#0C1224] text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white hover:bg-slate-100 border border-slate-200/80 dark:border-slate-800'
@@ -83,14 +83,14 @@ export const TechDomains: React.FC<TechDomainsProps> = ({ onJoinTrack }) => {
         </div>
 
         {/* 6 Interactive Tech Domain Cards Bento Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-6">
           {filteredDomains.map((domain, idx) => {
             const Icon = getDomainIcon(domain.iconName);
             const isFeatured = idx === 0 || idx === 1;
             return (
               <div
                 key={domain.id}
-                className={`group relative rounded-[36px] bg-white dark:bg-[#0A0F1E] border border-slate-200/80 dark:border-slate-800/80 p-8 shadow-sm transition-all duration-300 flex flex-col justify-between bento-card ${
+                className={`group relative rounded-[28px] sm:rounded-[36px] bg-white dark:bg-[#0A0F1E] border border-slate-200/80 dark:border-slate-800/80 p-5 sm:p-7 lg:p-8 shadow-sm transition-all duration-300 flex flex-col justify-between bento-card ${
                   isFeatured ? 'hover:border-indigo-500/50 dark:hover:border-cyan-400/50' : 'hover:border-slate-300 dark:hover:border-slate-700'
                 }`}
               >

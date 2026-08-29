@@ -38,7 +38,7 @@ export const Footer: React.FC<FooterProps> = ({ onOpenAdmin }) => {
   };
 
   return (
-    <footer className="relative bg-[#050816] text-slate-400 border-t border-slate-800/80 pt-16 pb-12 overflow-hidden font-sans">
+    <footer className="relative bg-[#050816]/85 backdrop-blur-md text-slate-400 border-t border-slate-800/80 pt-16 pb-12 overflow-hidden font-sans">
       {/* Subtle top glow */}
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-3/4 h-[1px] bg-gradient-to-r from-transparent via-[#00E5FF]/40 to-transparent" />
       

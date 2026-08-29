@@ -182,4 +182,30 @@
   animation: gradient-drift 8s ease infinite;
 }
 
+/* Touch & Mobile Responsive Utilities */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+/* Fluid Safe Area Padding */
+.safe-top {
+  padding-top: env(safe-area-inset-top, 0px);
+}
+
+.safe-bottom {
+  padding-bottom: env(safe-area-inset-bottom, 0px);
+}
+
+/* Touch-friendly target min sizes */
+.touch-target {
+  min-height: 44px;
+  min-width: 44px;
+}
+
+
 

@@ -33,7 +33,7 @@ export const ImpactDashboard: React.FC = () => {
   };
 
   return (
-    <section id="impact" className="py-24 relative overflow-hidden bg-slate-50/60 dark:bg-[#070B18] transition-colors duration-300">
+    <section id="impact" className="py-24 relative overflow-hidden bg-transparent transition-colors duration-300">
       {/* Background radial gradients */}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[500px] bg-indigo-500/5 dark:bg-cyan-500/5 rounded-full blur-3xl pointer-events-none" />
 
@@ -123,11 +123,11 @@ export const ImpactDashboard: React.FC = () => {
         </div>
 
         {/* Interactive Bento Visualization: Growth Timeline vs Skills Distribution */}
-        <div className="p-8 sm:p-12 rounded-[40px] bg-white dark:bg-[#0A0F1E] border border-slate-200/80 dark:border-slate-800/80 shadow-sm space-y-6 bento-card">
+        <div className="p-5 sm:p-8 lg:p-12 rounded-[30px] sm:rounded-[40px] bg-white dark:bg-[#0A0F1E] border border-slate-200/80 dark:border-slate-800/80 shadow-sm space-y-6 bento-card">
           {/* Header with Switcher */}
           <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-4 border-b border-slate-100 dark:border-slate-800">
             <div>
-              <h3 className="text-xl sm:text-2xl font-display font-bold text-slate-900 dark:text-white flex items-center gap-2">
+              <h3 className="text-lg sm:text-2xl font-display font-bold text-slate-900 dark:text-white flex items-center gap-2">
                 <BarChart2 className="w-5 h-5 text-indigo-600 dark:text-[#00E5FF]" /> Community Trajectory & Specializations
               </h3>
               <p className="text-xs text-slate-500 dark:text-slate-400 mt-0.5">
@@ -138,7 +138,7 @@ export const ImpactDashboard: React.FC = () => {
             <div className="flex items-center p-1 rounded-full bg-slate-100 dark:bg-slate-900 border border-slate-200/80 dark:border-slate-800 self-start">
               <button
                 onClick={() => setActiveTab('growth')}
-                className={`px-4 py-1.5 rounded-full text-xs font-semibold font-mono-code transition-all ${
+                className={`px-3 sm:px-4 py-1.5 rounded-full text-xs font-semibold font-mono-code transition-all ${
                   activeTab === 'growth'
                     ? 'bg-slate-900 dark:bg-[#00E5FF] text-white dark:text-black font-bold shadow-sm'
                     : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white'
@@ -148,7 +148,7 @@ export const ImpactDashboard: React.FC = () => {
               </button>
               <button
                 onClick={() => setActiveTab('skills')}
-                className={`px-4 py-1.5 rounded-full text-xs font-semibold font-mono-code transition-all ${
+                className={`px-3 sm:px-4 py-1.5 rounded-full text-xs font-semibold font-mono-code transition-all ${
                   activeTab === 'skills'
                     ? 'bg-slate-900 dark:bg-[#00E5FF] text-white dark:text-black font-bold shadow-sm'
                     : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white'
@@ -162,7 +162,7 @@ export const ImpactDashboard: React.FC = () => {
           {/* Growth View */}
           {activeTab === 'growth' ? (
             <div className="space-y-6 animate-in fade-in duration-200">
-              <div className="grid grid-cols-2 sm:grid-cols-6 gap-3">
+              <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-2.5 sm:gap-3">
                 {GROWTH_CHART_DATA.map((item, i) => {
                   const maxMembers = 1300;
                   const heightPercent = Math.round((item.members / maxMembers) * 100);

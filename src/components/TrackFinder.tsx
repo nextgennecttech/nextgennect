@@ -43,11 +43,11 @@ export const TrackFinder: React.FC<TrackFinderProps> = ({ onSelectTrack }) => {
   const recommendedDomain = getRecommendation();
 
   return (
-    <section id="finder" className="py-24 relative overflow-hidden bg-slate-50/60 dark:bg-[#070B18] transition-colors duration-300">
+    <section id="finder" className="py-24 relative overflow-hidden bg-transparent transition-colors duration-300">
       <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         
         {/* Container Box with Bento Style */}
-        <div className="relative rounded-[40px] bg-white dark:bg-[#0A0F1E] border border-slate-200/80 dark:border-slate-800/80 p-8 sm:p-14 shadow-sm overflow-hidden bento-card">
+        <div className="relative rounded-[30px] sm:rounded-[40px] bg-white dark:bg-[#0A0F1E] border border-slate-200/80 dark:border-slate-800/80 p-5 sm:p-8 lg:p-14 shadow-sm overflow-hidden bento-card">
           {/* Background Circuit Ambient Glow */}
           <div className="absolute top-0 right-0 w-96 h-96 bg-indigo-500/5 dark:bg-cyan-500/5 rounded-full blur-3xl pointer-events-none" />
 

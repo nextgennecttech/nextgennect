@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import { NetworkCanvas } from './NetworkCanvas';
 import { COMMUNITY_LINKS } from '../data/mockData';
 import { 
   ArrowRight, 
@@ -31,10 +30,7 @@ export const Hero: React.FC<HeroProps> = ({ onOpenJoinModal, onExploreDomains })
   const [showVideoModal, setShowVideoModal] = useState(false);
 
   return (
-    <section id="hero" className="relative min-h-screen pt-28 pb-16 overflow-hidden bg-[#F3F4F6] dark:bg-[#060914] transition-colors duration-300">
-      {/* Background Interactive 3D Particle Network Canvas */}
-      <NetworkCanvas />
-
+    <section id="hero" className="relative min-h-screen pt-28 pb-16 overflow-hidden bg-transparent transition-colors duration-300">
       {/* Cyber Grid & Ambient Radial Gradients with subtle floating motion */}
       <div className="absolute inset-0 cyber-grid dark:cyber-grid opacity-25 pointer-events-none" />
       <div className="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[400px] bg-gradient-to-tr from-indigo-500/10 via-[#00E5FF]/15 to-transparent rounded-full blur-3xl pointer-events-none animate-pulse-cyan" />

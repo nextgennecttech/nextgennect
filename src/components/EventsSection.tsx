@@ -70,7 +70,7 @@ export const EventsSection: React.FC<EventsSectionProps> = () => {
   };
 
   return (
-    <section id="events" className="py-24 relative overflow-hidden bg-slate-50/60 dark:bg-[#080D1C] transition-colors duration-300">
+    <section id="events" className="py-24 relative overflow-hidden bg-transparent transition-colors duration-300">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 space-y-12">
         
         {/* Section Header */}
@@ -88,13 +88,13 @@ export const EventsSection: React.FC<EventsSectionProps> = () => {
         </div>
 
         {/* Events Bento Grid */}
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-6">
           {UPCOMING_EVENTS.map((event) => {
             const percentFilled = Math.round((event.registeredCount / event.maxCapacity) * 100);
             return (
               <div
                 key={event.id}
-                className="rounded-[36px] bg-white dark:bg-[#0A0F1E] border border-slate-200/90 dark:border-slate-800/80 p-8 shadow-sm hover:border-indigo-400/40 dark:hover:border-cyan-400/40 transition-all flex flex-col justify-between space-y-6 group bento-card"
+                className="rounded-[28px] sm:rounded-[36px] bg-white dark:bg-[#0A0F1E] border border-slate-200/90 dark:border-slate-800/80 p-5 sm:p-7 lg:p-8 shadow-sm hover:border-indigo-400/40 dark:hover:border-cyan-400/40 transition-all flex flex-col justify-between space-y-6 group bento-card"
               >
                 <div className="space-y-4">
                   {/* Top Bar: Category & Status */}

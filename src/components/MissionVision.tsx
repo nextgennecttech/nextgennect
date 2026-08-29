@@ -37,7 +37,7 @@ export const MissionVision: React.FC = () => {
   };
 
   return (
-    <section id="mission" className="py-24 relative overflow-hidden bg-slate-50/60 dark:bg-[#060914] transition-colors duration-300">
+    <section id="mission" className="py-24 relative overflow-hidden bg-transparent transition-colors duration-300">
       {/* Background visual accents */}
       <div className="absolute top-1/3 left-0 w-96 h-96 bg-indigo-500/5 dark:bg-cyan-500/5 rounded-full blur-3xl pointer-events-none" />
       <div className="absolute bottom-10 right-0 w-96 h-96 bg-purple-500/5 rounded-full blur-3xl pointer-events-none" />

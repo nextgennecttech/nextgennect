@@ -203,9 +203,9 @@ export const AdminRecordsModal: React.FC<AdminRecordsModalProps> = ({ isOpen, on
         </div>
 
         {/* Filter Controls & Search */}
-        <div className="p-4 sm:px-8 border-b border-slate-200/80 dark:border-slate-800 flex flex-col md:flex-row items-center justify-between gap-3 bg-slate-50/50 dark:bg-[#0A0F24]/40">
-          {/* Type Tab Filter */}
-          <div className="flex flex-wrap items-center gap-1.5 w-full md:w-auto">
+        <div className="p-3.5 sm:p-4 sm:px-8 border-b border-slate-200/80 dark:border-slate-800 flex flex-col md:flex-row items-center justify-between gap-3 bg-slate-50/50 dark:bg-[#0A0F24]/40">
+          {/* Type Tab Filter - Horizontally scrollable on mobile */}
+          <div className="overflow-x-auto no-scrollbar flex items-center gap-1.5 w-full md:w-auto pb-1 md:pb-0">
             {[
               { id: 'all', label: 'All Records' },
               { id: 'course_application', label: 'Courses' },
@@ -216,7 +216,7 @@ export const AdminRecordsModal: React.FC<AdminRecordsModalProps> = ({ isOpen, on
               <button
                 key={tab.id}
                 onClick={() => setFilterType(tab.id as any)}
-                className={`px-3 py-1.5 rounded-full text-xs font-mono-code transition-all ${
+                className={`px-3 py-1.5 rounded-full text-xs font-mono-code whitespace-nowrap transition-all ${
                   filterType === tab.id
                     ? 'bg-slate-900 dark:bg-[#00E5FF] text-white dark:text-black font-bold shadow-sm'
                     : 'bg-white dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-700'

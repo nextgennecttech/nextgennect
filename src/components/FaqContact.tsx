@@ -59,7 +59,7 @@ export const FaqContact: React.FC = () => {
   };
 
   return (
-    <section id="faq" className="py-24 relative overflow-hidden bg-white dark:bg-[#080D1C] transition-colors duration-300">
+    <section id="faq" className="py-24 relative overflow-hidden bg-slate-50/40 dark:bg-[#080D1C]/40 backdrop-blur-[2px] transition-colors duration-300">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 space-y-20">
         
         {/* FAQ Section */}

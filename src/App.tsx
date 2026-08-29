@@ -14,6 +14,7 @@ import { SearchModal } from './components/SearchModal';
 import { CommunityModal } from './components/CommunityModal';
 import { ApplyEnrollModal, EnrollmentType } from './components/ApplyEnrollModal';
 import { AdminRecordsModal } from './components/AdminRecordsModal';
+import { NetworkCanvas } from './components/NetworkCanvas';
 import { TechDomain, TrainingCourse, ClientService } from './types';
 
 export default function App() {
@@ -69,7 +70,10 @@ export default function App() {
 
   return (
     <ThemeProvider>
-      <div className="min-h-screen bg-slate-50 dark:bg-[#050816] text-slate-900 dark:text-slate-100 transition-colors duration-300 font-sans selection:bg-[#00E5FF] selection:text-black">
+      <div className="min-h-screen bg-slate-50 dark:bg-[#050816] text-slate-900 dark:text-slate-100 transition-colors duration-300 font-sans selection:bg-[#00E5FF] selection:text-black relative">
+        {/* Global Tech Wire Circuit Canvas (Interactive across all sections) */}
+        <NetworkCanvas />
+
         {/* Navigation Bar */}
         <Navbar
           onOpenSearch={() => setSearchModalOpen(true)}
