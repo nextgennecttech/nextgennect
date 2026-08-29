@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
 import { BrandLogo } from './BrandLogo';
+import { COMMUNITY_LINKS } from '../data/mockData';
 import { 
   Github, 
   Linkedin, 
-  Twitter, 
+  Instagram, 
   Mail, 
   ArrowRight, 
   CheckCircle2, 
@@ -11,11 +12,16 @@ import {
   MapPin, 
   Terminal,
   Sparkles,
-  ExternalLink
+  ExternalLink,
+  Database
 } from 'lucide-react';
 import confetti from 'canvas-confetti';
 
-export const Footer: React.FC = () => {
+interface FooterProps {
+  onOpenAdmin?: () => void;
+}
+
+export const Footer: React.FC<FooterProps> = ({ onOpenAdmin }) => {
   const [newsletterEmail, setNewsletterEmail] = useState('');
   const [newsletterSubscribed, setNewsletterSubscribed] = useState(false);
 
@@ -50,86 +56,102 @@ export const Footer: React.FC = () => {
 
             <div className="flex items-center gap-2 text-xs font-mono-code text-cyan-400">
               <MapPin className="w-4 h-4 text-[#00E5FF] shrink-0" />
-              <span>Peshawar, Khyber Pakhtunkhwa, Pakistan</span>
+              <span>{COMMUNITY_LINKS.location}</span>
             </div>
 
-            {/* Social Icons */}
+            {/* Official Community Social Icons */}
             <div className="flex items-center gap-2.5 pt-1">
               <a
-                href="https://linkedin.com"
+                href={COMMUNITY_LINKS.linkedin}
                 target="_blank"
                 rel="noreferrer"
-                className="w-8 h-8 rounded-xl bg-slate-900 border border-slate-800 flex items-center justify-center text-slate-400 hover:text-[#00E5FF] hover:border-[#00E5FF]/40 transition-colors"
-                aria-label="LinkedIn"
+                className="w-9 h-9 rounded-xl bg-slate-900 border border-slate-800 flex items-center justify-center text-slate-400 hover:text-[#00E5FF] hover:border-[#00E5FF]/50 transition-all hover:scale-105 shadow-sm"
+                aria-label="Next Gennect LinkedIn"
+                title="LinkedIn Community"
               >
                 <Linkedin className="w-4 h-4" />
               </a>
               <a
-                href="https://github.com"
+                href={COMMUNITY_LINKS.instagram}
                 target="_blank"
                 rel="noreferrer"
-                className="w-8 h-8 rounded-xl bg-slate-900 border border-slate-800 flex items-center justify-center text-slate-400 hover:text-white hover:border-slate-600 transition-colors"
-                aria-label="GitHub"
+                className="w-9 h-9 rounded-xl bg-slate-900 border border-slate-800 flex items-center justify-center text-slate-400 hover:text-[#EC4899] hover:border-[#EC4899]/50 transition-all hover:scale-105 shadow-sm"
+                aria-label="Next Gennect Instagram"
+                title="Instagram Community"
+              >
+                <Instagram className="w-4 h-4" />
+              </a>
+              <a
+                href={COMMUNITY_LINKS.github}
+                target="_blank"
+                rel="noreferrer"
+                className="w-9 h-9 rounded-xl bg-slate-900 border border-slate-800 flex items-center justify-center text-slate-400 hover:text-white hover:border-slate-600 transition-all hover:scale-105 shadow-sm"
+                aria-label="Next Gennect GitHub"
+                title="GitHub Community"
               >
                 <Github className="w-4 h-4" />
               </a>
               <a
-                href="https://twitter.com"
-                target="_blank"
-                rel="noreferrer"
-                className="w-8 h-8 rounded-xl bg-slate-900 border border-slate-800 flex items-center justify-center text-slate-400 hover:text-cyan-400 hover:border-cyan-400/40 transition-colors"
-                aria-label="Twitter"
-              >
-                <Twitter className="w-4 h-4" />
-              </a>
-              <a
-                href="mailto:hello@nextgennect.com"
-                className="w-8 h-8 rounded-xl bg-slate-900 border border-slate-800 flex items-center justify-center text-slate-400 hover:text-purple-400 hover:border-purple-400/40 transition-colors"
-                aria-label="Email"
+                href={`mailto:${COMMUNITY_LINKS.email}`}
+                className="w-9 h-9 rounded-xl bg-slate-900 border border-slate-800 flex items-center justify-center text-slate-400 hover:text-[#00E5FF] hover:border-cyan-400/50 transition-all hover:scale-105 shadow-sm"
+                aria-label="Contact Community Email"
+                title={`Email: ${COMMUNITY_LINKS.email}`}
               >
                 <Mail className="w-4 h-4" />
               </a>
             </div>
+
+            <div className="text-[11px] font-mono-code text-slate-500 flex items-center gap-1.5">
+              <span>Official Email:</span>
+              <a href={`mailto:${COMMUNITY_LINKS.email}`} className="text-cyan-400 hover:underline">
+                {COMMUNITY_LINKS.email}
+              </a>
+            </div>
           </div>
 
-          {/* Quick Navigation Links */}
+          {/* Quick Links */}
           <div className="space-y-4">
             <h4 className="text-xs font-mono-code font-bold uppercase tracking-wider text-white">
               Navigation
             </h4>
             <ul className="space-y-2.5 text-xs">
               <li>
-                <a href="#hero" className="hover:text-[#00E5FF] transition-colors">Home Canvas</a>
+                <a href="#hero" className="hover:text-[#00E5FF] transition-colors">Home & Ecosystem</a>
               </li>
               <li>
-                <a href="#domains" className="hover:text-[#00E5FF] transition-colors">6 Tech Domains</a>
+                <a href="#domains" className="hover:text-[#00E5FF] transition-colors">Tech Domains</a>
               </li>
               <li>
-                <a href="#mission" className="hover:text-[#00E5FF] transition-colors">Mission & Leadership</a>
+                <a href="#courses" className="hover:text-[#00E5FF] transition-colors">Courses & Services</a>
               </li>
               <li>
-                <a href="#impact" className="hover:text-[#00E5FF] transition-colors">Impact Dashboard</a>
+                <a href="#events" className="hover:text-[#00E5FF] transition-colors">Workshops & Events</a>
               </li>
               <li>
-                <a href="#events" className="hover:text-[#00E5FF] transition-colors">Workshops & CTFs</a>
+                <a href="#mission" className="hover:text-[#00E5FF] transition-colors">Leadership & Vision</a>
               </li>
-              <li>
-                <a href="#finder" className="hover:text-[#00E5FF] transition-colors">Track Advisor</a>
-              </li>
-              <li>
-                <a href="#faq" className="hover:text-[#00E5FF] transition-colors">FAQ & Contact</a>
-              </li>
+              {onOpenAdmin && (
+                <li>
+                  <button 
+                    onClick={onOpenAdmin}
+                    className="text-cyan-400 hover:text-white flex items-center gap-1.5 transition-colors font-mono-code font-bold"
+                  >
+                    <Database className="w-3.5 h-3.5" />
+                    <span>Admin Registry Tracker</span>
+                  </button>
+                </li>
+              )}
             </ul>
           </div>
 
-          {/* Tech Tracks */}
+          {/* Domains */}
           <div className="space-y-4">
             <h4 className="text-xs font-mono-code font-bold uppercase tracking-wider text-white">
-              Specialized Tracks
+              Engineering Tracks
             </h4>
             <ul className="space-y-2.5 text-xs">
               <li>
-                <a href="#domains" className="hover:text-[#00E5FF] transition-colors">Artificial Intelligence & ML</a>
+                <a href="#domains" className="hover:text-[#00E5FF] transition-colors">AI & Machine Learning</a>
               </li>
               <li>
                 <a href="#domains" className="hover:text-[#00E5FF] transition-colors">Cybersecurity & Ethical Hacking</a>

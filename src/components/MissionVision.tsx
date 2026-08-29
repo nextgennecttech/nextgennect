@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import { LEADERSHIP_TEAM, CORE_VALUES } from '../data/mockData';
 import { TeamMember, CoreValue } from '../types';
+import { LeaderPortrait } from './LeaderPortraits';
+import { ExecutivePoster } from './ExecutivePoster';
 import { 
   Target, 
   Compass, 
@@ -35,7 +37,7 @@ export const MissionVision: React.FC = () => {
   };
 
   return (
-    <section id="mission" className="py-24 relative overflow-hidden bg-[#F3F4F6] dark:bg-[#060914] transition-colors duration-300">
+    <section id="mission" className="py-24 relative overflow-hidden bg-slate-50/60 dark:bg-[#060914] transition-colors duration-300">
       {/* Background visual accents */}
       <div className="absolute top-1/3 left-0 w-96 h-96 bg-indigo-500/5 dark:bg-cyan-500/5 rounded-full blur-3xl pointer-events-none" />
       <div className="absolute bottom-10 right-0 w-96 h-96 bg-purple-500/5 rounded-full blur-3xl pointer-events-none" />
@@ -44,14 +46,14 @@ export const MissionVision: React.FC = () => {
         
         {/* Section Header */}
         <div className="text-center max-w-3xl mx-auto space-y-3">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-indigo-50 dark:bg-cyan-500/10 text-indigo-600 dark:text-[#00E5FF] text-[10px] font-mono-code font-bold uppercase tracking-widest border border-indigo-100 dark:border-cyan-500/20">
+          <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-indigo-50 dark:bg-cyan-500/10 text-indigo-700 dark:text-[#00E5FF] text-[10px] font-mono-code font-bold uppercase tracking-widest border border-indigo-200/80 dark:border-cyan-500/20">
             <Target className="w-3.5 h-3.5" />
             <span>PURPOSE & LEADERSHIP</span>
           </div>
           <h2 className="text-3xl sm:text-5xl font-display font-extrabold text-slate-900 dark:text-white tracking-tight">
             Our Mission, Vision & <span className="text-indigo-600 dark:text-[#00E5FF]">Leadership</span>
           </h2>
-          <p className="text-base sm:text-lg text-slate-600 dark:text-slate-300">
+          <p className="text-base sm:text-lg text-slate-700 dark:text-slate-300 font-normal">
             Founded in Peshawar, Next Gennect exists to unlock world-class engineering potential, cultivating the next generation of builders, problem solvers, and tech entrepreneurs.
           </p>
         </div>
@@ -162,50 +164,46 @@ export const MissionVision: React.FC = () => {
                 key={member.id}
                 className="group relative rounded-[36px] bg-white dark:bg-[#0A0F1E] border border-slate-200/80 dark:border-slate-800/80 overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col justify-between bento-card"
               >
-                {/* Member Header Image & Badge */}
-                <div className="relative h-64 overflow-hidden bg-slate-900">
-                  <img
-                    src={member.avatar}
-                    alt={member.name}
-                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 opacity-90 group-hover:opacity-100"
-                    referrerPolicy="no-referrer"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-[#0A0F1E] via-[#0A0F1E]/40 to-transparent" />
+                {/* Member Header Image & Badge with official Executive Portrait */}
+                <div className="relative h-72 overflow-hidden bg-slate-900 flex items-center justify-center p-3">
+                  <div className="relative w-full h-full rounded-2xl overflow-hidden shadow-inner">
+                    <LeaderPortrait id={member.id} className="w-full h-full group-hover:scale-105 transition-transform duration-500" />
+                  </div>
                   
                   {/* Role Badge */}
-                  <div className="absolute top-4 right-4">
-                    <span className="px-3 py-1 rounded-full bg-black/60 backdrop-blur-md border border-white/20 text-white font-mono-code text-[10px] font-bold uppercase tracking-wider">
+                  <div className="absolute top-5 right-5 z-10">
+                    <span className="px-3 py-1 rounded-full bg-black/70 backdrop-blur-md border border-[#00E5FF]/40 text-[#00E5FF] font-mono-code text-[10px] font-bold uppercase tracking-wider shadow-lg">
                       {member.badge}
                     </span>
                   </div>
 
-                  {/* Name Overlay */}
-                  <div className="absolute bottom-4 left-4 right-4">
-                    <h4 className="text-xl font-display font-bold text-white group-hover:text-[#00E5FF] transition-colors">
+                  {/* Official Title Overlay */}
+                  <div className="absolute bottom-4 left-5 right-5 z-10">
+                    <div className="inline-block px-3 py-1 rounded-xl bg-[#00B4D8] text-white font-display font-extrabold text-xs tracking-wider uppercase shadow-md mb-1">
                       {member.name}
-                    </h4>
-                    <p className="text-xs font-mono-code text-cyan-300 font-medium">
+                    </div>
+                    <p className="text-[11px] font-mono-code text-cyan-200 font-bold bg-slate-950/80 px-2 py-0.5 rounded-lg backdrop-blur-sm inline-block">
                       {member.role}
                     </p>
                   </div>
                 </div>
 
                 {/* Member Body */}
-                <div className="p-7 space-y-4 flex-1 flex flex-col justify-between">
+                <div className="p-6 space-y-4 flex-1 flex flex-col justify-between">
                   <div className="space-y-3">
-                    <div className="text-xs font-semibold text-slate-500 dark:text-slate-400">
+                    <div className="text-xs font-semibold text-indigo-600 dark:text-cyan-400 font-mono-code">
                       {member.title}
                     </div>
-                    <p className="text-xs text-slate-600 dark:text-slate-300 line-clamp-3 leading-relaxed">
+                    <p className="text-xs text-slate-700 dark:text-slate-300 line-clamp-3 leading-relaxed font-normal">
                       {member.bio}
                     </p>
 
                     {/* Specialties */}
-                    <div className="flex flex-wrap gap-1.5 pt-2">
+                    <div className="flex flex-wrap gap-1.5 pt-1">
                       {member.specialties.map((spec, sIdx) => (
                         <span
                           key={sIdx}
-                          className="px-2.5 py-0.5 rounded-full bg-slate-100 dark:bg-slate-800 text-[10px] font-mono-code text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-slate-700/60"
+                          className="px-2.5 py-0.5 rounded-full bg-slate-100 dark:bg-slate-800/90 text-[10px] font-mono-code text-slate-800 dark:text-slate-300 border border-slate-200 dark:border-slate-700/60 font-medium"
                         >
                           {spec}
                         </span>
@@ -219,7 +217,7 @@ export const MissionVision: React.FC = () => {
                       onClick={() => setSelectedMember(member)}
                       className="inline-flex items-center gap-1.5 text-xs font-bold text-indigo-600 dark:text-[#00E5FF] hover:underline font-display"
                     >
-                      <span>Read Full Bio</span>
+                      <span>View Official Poster</span>
                       <ArrowUpRight className="w-3.5 h-3.5" />
                     </button>
 
@@ -298,69 +296,87 @@ export const MissionVision: React.FC = () => {
 
       </div>
 
-      {/* Leadership Full Bio Modal */}
+      {/* Leadership Full Bio & Official Poster Modal */}
       {selectedMember && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-md animate-in fade-in duration-200">
-          <div className="relative w-full max-w-2xl bg-[#080D1C] text-white rounded-3xl border border-cyan-500/40 p-6 sm:p-8 space-y-6 shadow-2xl overflow-hidden">
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-md animate-in fade-in duration-200 overflow-y-auto">
+          <div className="relative w-full max-w-3xl bg-white dark:bg-[#080D1C] text-slate-900 dark:text-white rounded-[32px] border border-slate-200/90 dark:border-cyan-500/40 p-6 sm:p-8 space-y-6 shadow-2xl overflow-hidden my-8">
             <div className="absolute top-0 right-0 w-48 h-48 bg-gradient-to-br from-[#00E5FF]/15 to-transparent rounded-bl-full pointer-events-none" />
 
             <div className="flex items-start justify-between">
-              <div className="flex items-center gap-4">
-                <img
-                  src={selectedMember.avatar}
-                  alt={selectedMember.name}
-                  className="w-16 h-16 rounded-2xl object-cover border-2 border-[#00E5FF]/60"
-                  referrerPolicy="no-referrer"
-                />
-                <div>
-                  <div className="flex items-center gap-2">
-                    <h3 className="text-2xl font-display font-bold text-white">{selectedMember.name}</h3>
-                    <span className="px-2 py-0.5 text-[10px] font-mono-code rounded bg-cyan-500/20 text-[#00E5FF] border border-cyan-500/40">
-                      {selectedMember.badge}
-                    </span>
-                  </div>
-                  <p className="text-xs font-mono-code text-cyan-300">{selectedMember.role}</p>
-                </div>
+              <div className="flex items-center gap-3">
+                <div className="w-3 h-3 rounded-full bg-indigo-600 dark:bg-[#00E5FF] animate-ping" />
+                <h3 className="text-xl sm:text-2xl font-display font-bold text-slate-900 dark:text-white">Next Gennect Official Leadership</h3>
               </div>
 
               <button
                 onClick={() => setSelectedMember(null)}
-                className="text-slate-400 hover:text-white p-2 rounded-xl hover:bg-slate-800"
+                className="text-slate-400 hover:text-slate-900 dark:hover:text-white p-2 rounded-xl hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors"
+                aria-label="Close"
               >
                 ✕
               </button>
             </div>
 
-            <div className="space-y-4">
-              <div>
-                <h4 className="text-xs font-mono-code uppercase text-slate-400 tracking-wider mb-1">Executive Summary</h4>
-                <p className="text-sm text-slate-200 leading-relaxed">{selectedMember.detailedBio}</p>
+            <div className="grid grid-cols-1 md:grid-cols-12 gap-6 items-center">
+              {/* Official Branded Poster Card matching Media images */}
+              <div className="md:col-span-5 flex justify-center">
+                <div className="w-full max-w-[280px]">
+                  <ExecutivePoster member={selectedMember} />
+                </div>
               </div>
 
-              <div>
-                <h4 className="text-xs font-mono-code uppercase text-slate-400 tracking-wider mb-2">Technical & Strategic Focus</h4>
-                <div className="flex flex-wrap gap-2">
-                  {selectedMember.specialties.map((spec, i) => (
-                    <span
-                      key={i}
-                      className="px-3 py-1 rounded-lg bg-slate-900 text-xs font-mono-code text-cyan-300 border border-slate-800"
-                    >
-                      {spec}
+              {/* Bio & Details */}
+              <div className="md:col-span-7 space-y-5">
+                <div>
+                  <div className="flex items-center gap-2 mb-1">
+                    <span className="px-2.5 py-0.5 text-[10px] font-mono-code font-bold rounded-full bg-indigo-50 dark:bg-cyan-500/20 text-indigo-700 dark:text-[#00E5FF] border border-indigo-200 dark:border-cyan-500/40 uppercase tracking-wider">
+                      {selectedMember.badge}
                     </span>
-                  ))}
+                    <span className="text-xs text-slate-600 dark:text-slate-400 font-mono-code font-medium">{selectedMember.title}</span>
+                  </div>
+                  <h4 className="text-2xl font-display font-extrabold text-slate-900 dark:text-white">{selectedMember.name}</h4>
+                  <p className="text-xs font-mono-code text-indigo-600 dark:text-cyan-300 font-semibold">{selectedMember.role}</p>
+                </div>
+
+                <div>
+                  <h5 className="text-xs font-mono-code uppercase text-slate-500 dark:text-slate-400 tracking-wider mb-1.5 font-bold">
+                    Executive Biography
+                  </h5>
+                  <p className="text-xs sm:text-sm text-slate-700 dark:text-slate-200 leading-relaxed font-normal">
+                    {selectedMember.detailedBio}
+                  </p>
+                </div>
+
+                <div>
+                  <h5 className="text-xs font-mono-code uppercase text-slate-500 dark:text-slate-400 tracking-wider mb-2 font-bold">
+                    Core Specializations & Impact
+                  </h5>
+                  <div className="flex flex-wrap gap-1.5">
+                    {selectedMember.specialties.map((spec, i) => (
+                      <span
+                        key={i}
+                        className="px-3 py-1 rounded-xl bg-slate-100 dark:bg-slate-900/90 text-xs font-mono-code text-indigo-700 dark:text-cyan-300 border border-slate-200 dark:border-slate-700/80 font-medium"
+                      >
+                        {spec}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+
+                <div className="pt-3 border-t border-slate-200/90 dark:border-slate-800 flex items-center justify-between">
+                  <div className="text-xs text-slate-600 dark:text-slate-400 font-mono-code">
+                    Official Contact: <span className="text-indigo-600 dark:text-[#00E5FF] font-semibold">{selectedMember.email}</span>
+                  </div>
                 </div>
               </div>
             </div>
 
-            <div className="flex items-center justify-between pt-4 border-t border-slate-800">
-              <div className="text-xs text-slate-400 font-mono-code">
-                Connect: <span className="text-[#00E5FF]">{selectedMember.email}</span>
-              </div>
+            <div className="flex items-center justify-end pt-3 border-t border-slate-200/90 dark:border-slate-800/80">
               <button
                 onClick={() => setSelectedMember(null)}
-                className="px-5 py-2 rounded-xl bg-slate-800 hover:bg-slate-700 text-xs font-semibold text-white transition-colors"
+                className="px-6 py-2.5 rounded-full bg-slate-900 hover:bg-indigo-600 dark:bg-cyan-500/20 dark:hover:bg-[#00E5FF] text-white dark:text-cyan-300 dark:hover:text-black font-mono-code text-xs font-bold transition-all border border-transparent dark:border-cyan-500/40"
               >
-                Close Bio
+                Close Profile
               </button>
             </div>
           </div>

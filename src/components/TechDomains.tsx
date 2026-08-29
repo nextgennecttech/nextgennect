@@ -174,65 +174,65 @@ export const TechDomains: React.FC<TechDomainsProps> = ({ onJoinTrack }) => {
       {/* Domain Deep Dive & 4-Stage Roadmap Modal */}
       {selectedDomain && (
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-md animate-in fade-in duration-200">
-          <div className="relative w-full max-w-3xl max-h-[90vh] overflow-y-auto bg-[#080D1C] text-white rounded-3xl border border-cyan-500/40 p-6 sm:p-8 space-y-6 shadow-2xl">
+          <div className="relative w-full max-w-3xl max-h-[90vh] overflow-y-auto bg-white dark:bg-[#080D1C] text-slate-900 dark:text-white rounded-[32px] border border-slate-200/90 dark:border-cyan-500/40 p-6 sm:p-8 space-y-6 shadow-2xl">
             {/* Header */}
-            <div className="flex items-start justify-between pb-4 border-b border-slate-800">
+            <div className="flex items-start justify-between pb-4 border-b border-slate-200/90 dark:border-slate-800">
               <div className="space-y-1">
                 <div className="flex items-center gap-2">
-                  <span className="text-xs font-mono-code font-bold text-[#00E5FF] uppercase tracking-wider">
+                  <span className="text-xs font-mono-code font-bold text-indigo-700 dark:text-[#00E5FF] uppercase tracking-wider">
                     {selectedDomain.category}
                   </span>
-                  <span className="text-xs font-mono-code px-2 py-0.5 rounded bg-slate-800 text-slate-300">
+                  <span className="text-xs font-mono-code px-2 py-0.5 rounded bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 font-semibold">
                     {selectedDomain.shortCode}
                   </span>
                 </div>
-                <h3 className="text-2xl font-display font-bold text-white">
+                <h3 className="text-2xl font-display font-bold text-slate-900 dark:text-white">
                   {selectedDomain.title}
                 </h3>
               </div>
 
               <button
                 onClick={() => setSelectedDomain(null)}
-                className="text-slate-400 hover:text-white p-2 rounded-xl hover:bg-slate-800"
+                className="text-slate-400 hover:text-slate-800 dark:hover:text-white p-2 rounded-xl hover:bg-slate-100 dark:hover:bg-slate-800"
               >
                 ✕
               </button>
             </div>
 
             {/* Overview */}
-            <p className="text-sm text-slate-300 leading-relaxed">
+            <p className="text-sm text-slate-700 dark:text-slate-300 leading-relaxed">
               {selectedDomain.detailedDescription}
             </p>
 
             {/* 4-Stage Curriculum Roadmap */}
             <div className="space-y-4">
               <div className="flex items-center justify-between">
-                <h4 className="text-sm font-mono-code font-bold uppercase tracking-wider text-[#00E5FF] flex items-center gap-2">
+                <h4 className="text-sm font-mono-code font-bold uppercase tracking-wider text-indigo-700 dark:text-[#00E5FF] flex items-center gap-2">
                   <Sparkles className="w-4 h-4" /> 4-Stage Cohort Roadmap (12 Weeks)
                 </h4>
-                <span className="text-xs text-slate-400 font-mono-code">100% Hands-on</span>
+                <span className="text-xs text-slate-600 dark:text-slate-400 font-mono-code font-semibold">100% Hands-on</span>
               </div>
 
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                 {selectedDomain.roadmap.map((step) => (
                   <div
                     key={step.step}
-                    className="p-4 rounded-2xl bg-slate-900/90 border border-slate-800 space-y-2"
+                    className="p-4 rounded-2xl bg-slate-50 dark:bg-slate-900/90 border border-slate-200/90 dark:border-slate-800 space-y-2"
                   >
                     <div className="flex items-center justify-between">
-                      <span className="w-6 h-6 rounded-full bg-[#00E5FF]/20 text-[#00E5FF] text-xs font-mono-code font-bold flex items-center justify-center">
+                      <span className="w-6 h-6 rounded-full bg-indigo-100 dark:bg-[#00E5FF]/20 text-indigo-700 dark:text-[#00E5FF] text-xs font-mono-code font-bold flex items-center justify-center">
                         {step.step}
                       </span>
-                      <span className="text-[11px] font-mono-code text-purple-400 font-semibold">
+                      <span className="text-[11px] font-mono-code text-purple-600 dark:text-purple-400 font-semibold">
                         {step.duration}
                       </span>
                     </div>
 
-                    <h5 className="text-sm font-display font-bold text-white">
+                    <h5 className="text-sm font-display font-bold text-slate-900 dark:text-white">
                       {step.title}
                     </h5>
 
-                    <p className="text-xs text-slate-400 leading-relaxed">
+                    <p className="text-xs text-slate-600 dark:text-slate-400 leading-relaxed">
                       {step.description}
                     </p>
 
@@ -240,7 +240,7 @@ export const TechDomains: React.FC<TechDomainsProps> = ({ onJoinTrack }) => {
                       {step.keySkills.map((skill, sI) => (
                         <span
                           key={sI}
-                          className="px-2 py-0.5 rounded bg-black text-[10px] font-mono-code text-cyan-300 border border-slate-800"
+                          className="px-2 py-0.5 rounded bg-slate-200/80 dark:bg-black text-[10px] font-mono-code text-slate-800 dark:text-cyan-300 border border-slate-300/80 dark:border-slate-800"
                         >
                           {skill}
                         </span>
@@ -252,27 +252,27 @@ export const TechDomains: React.FC<TechDomainsProps> = ({ onJoinTrack }) => {
             </div>
 
             {/* Featured Student Project */}
-            <div className="p-5 rounded-2xl bg-gradient-to-r from-cyan-950/40 via-purple-950/20 to-slate-900 border border-cyan-500/30 space-y-2">
-              <div className="text-[11px] font-mono-code uppercase text-[#00E5FF] font-bold tracking-wider flex items-center gap-1.5">
+            <div className="p-5 rounded-2xl bg-indigo-50/70 dark:bg-gradient-to-r dark:from-cyan-950/40 dark:via-purple-950/20 dark:to-slate-900 border border-indigo-200/80 dark:border-cyan-500/30 space-y-2">
+              <div className="text-[11px] font-mono-code uppercase text-indigo-700 dark:text-[#00E5FF] font-bold tracking-wider flex items-center gap-1.5">
                 <FolderGit2 className="w-3.5 h-3.5" /> Featured Student Capstone Project
               </div>
-              <h5 className="text-base font-display font-bold text-white">
+              <h5 className="text-base font-display font-bold text-slate-900 dark:text-white">
                 {selectedDomain.featuredProject.title}
               </h5>
-              <p className="text-xs text-slate-300">
+              <p className="text-xs text-slate-700 dark:text-slate-300">
                 {selectedDomain.featuredProject.description}
               </p>
-              <div className="pt-1 text-xs font-semibold text-emerald-400 flex items-center gap-1.5">
+              <div className="pt-1 text-xs font-semibold text-emerald-700 dark:text-emerald-400 flex items-center gap-1.5">
                 <CheckCircle2 className="w-3.5 h-3.5" />
                 <span>{selectedDomain.featuredProject.impact}</span>
               </div>
             </div>
 
             {/* Modal Actions */}
-            <div className="flex items-center justify-between pt-4 border-t border-slate-800">
+            <div className="flex items-center justify-between pt-4 border-t border-slate-200/90 dark:border-slate-800">
               <button
                 onClick={() => setSelectedDomain(null)}
-                className="px-4 py-2 rounded-xl text-xs font-semibold text-slate-300 hover:bg-slate-800"
+                className="px-4 py-2 rounded-xl text-xs font-semibold text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800"
               >
                 Close Window
               </button>
@@ -283,7 +283,7 @@ export const TechDomains: React.FC<TechDomainsProps> = ({ onJoinTrack }) => {
                   setSelectedDomain(null);
                   onJoinTrack(d);
                 }}
-                className="px-6 py-2.5 rounded-xl bg-[#00E5FF] text-black font-display font-bold text-xs uppercase tracking-wider hover:bg-[#38BDF8] shadow-[0_0_20px_rgba(0,229,255,0.4)]"
+                className="px-6 py-2.5 rounded-full bg-slate-900 hover:bg-indigo-600 dark:bg-[#00E5FF] text-white dark:text-black font-display font-bold text-xs uppercase tracking-wider dark:hover:bg-[#38BDF8] shadow-md dark:shadow-[0_0_20px_rgba(0,229,255,0.4)] transition-all"
               >
                 Apply for {selectedDomain.shortCode} Cohort
               </button>

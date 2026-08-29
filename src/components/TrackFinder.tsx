@@ -53,14 +53,14 @@ export const TrackFinder: React.FC<TrackFinderProps> = ({ onSelectTrack }) => {
 
           {/* Header */}
           <div className="text-center max-w-2xl mx-auto space-y-3 mb-10">
-            <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-indigo-50 dark:bg-cyan-500/10 text-indigo-600 dark:text-[#00E5FF] text-[10px] font-mono-code font-bold uppercase tracking-widest border border-indigo-100 dark:border-cyan-500/20">
+            <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-indigo-50 dark:bg-cyan-500/10 text-indigo-700 dark:text-[#00E5FF] text-[10px] font-mono-code font-bold uppercase tracking-widest border border-indigo-200/80 dark:border-cyan-500/20">
               <Compass className="w-3.5 h-3.5" />
               <span>INTERACTIVE CAREER ADVISOR</span>
             </div>
             <h2 className="text-3xl sm:text-4xl font-display font-extrabold text-slate-900 dark:text-white">
               Find Your Ideal <span className="text-indigo-600 dark:text-[#00E5FF]">Tech Track</span>
             </h2>
-            <p className="text-sm sm:text-base text-slate-600 dark:text-slate-400">
+            <p className="text-sm sm:text-base text-slate-700 dark:text-slate-400 font-normal">
               Not sure where to begin? Answer 3 quick questions to discover your tailored Next Gennect learning roadmap.
             </p>
           </div>
@@ -105,14 +105,14 @@ export const TrackFinder: React.FC<TrackFinderProps> = ({ onSelectTrack }) => {
                     }}
                     className={`p-6 rounded-[28px] border text-left transition-all group bento-card ${
                       interest === opt.id
-                        ? 'border-indigo-600 dark:border-[#00E5FF] bg-indigo-50/60 dark:bg-cyan-500/10 text-slate-900 dark:text-white'
-                        : 'border-slate-200/80 dark:border-slate-800/80 bg-slate-50/80 dark:bg-slate-900/60 hover:border-slate-400 dark:hover:border-slate-700'
+                        ? 'border-indigo-600 dark:border-[#00E5FF] bg-indigo-50/70 dark:bg-cyan-500/10 text-slate-900 dark:text-white shadow-sm'
+                        : 'border-slate-200/90 dark:border-slate-800/80 bg-slate-50/90 dark:bg-slate-900/60 hover:border-indigo-400 dark:hover:border-slate-700'
                     }`}
                   >
                     <div className="text-sm font-display font-bold text-slate-900 dark:text-white group-hover:text-indigo-600 dark:group-hover:text-[#00E5FF]">
                       {opt.title}
                     </div>
-                    <p className="text-xs text-slate-500 dark:text-slate-400 mt-1.5 leading-relaxed">
+                    <p className="text-xs text-slate-700 dark:text-slate-400 mt-1.5 leading-relaxed font-normal">
                       {opt.desc}
                     </p>
                   </button>

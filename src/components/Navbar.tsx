@@ -1,24 +1,38 @@
 import React, { useState, useEffect } from 'react';
 import { BrandLogo } from './BrandLogo';
 import { useTheme } from '../context/ThemeContext';
-import { Sun, Moon, Search, Menu, X, ArrowRight, Sparkles, Terminal } from 'lucide-react';
+import { getStoredRecords } from '../services/recordManager';
+import { Sun, Moon, Search, Menu, X, ArrowRight, Sparkles, Terminal, Database } from 'lucide-react';
 
 interface NavbarProps {
   onOpenSearch: () => void;
   onOpenJoinModal: () => void;
+  onOpenAdmin?: () => void;
 }
 
-export const Navbar: React.FC<NavbarProps> = ({ onOpenSearch, onOpenJoinModal }) => {
+export const Navbar: React.FC<NavbarProps> = ({ onOpenSearch, onOpenJoinModal, onOpenAdmin }) => {
   const { theme, toggleTheme } = useTheme();
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [activeSection, setActiveSection] = useState('hero');
+  const [recordCount, setRecordCount] = useState<number>(0);
 
   useEffect(() => {
+    // Initial count
+    setRecordCount(getStoredRecords().length);
+
+    const updateCount = () => {
+      setRecordCount(getStoredRecords().length);
+    };
+
+    window.addEventListener('nextgennect_record_added', updateCount);
+    window.addEventListener('nextgennect_record_deleted', updateCount);
+    window.addEventListener('nextgennect_records_cleared', updateCount);
+
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 20);
 
-      const sections = ['hero', 'domains', 'mission', 'impact', 'events', 'finder', 'faq', 'contact'];
+      const sections = ['hero', 'domains', 'courses', 'mission', 'impact', 'events', 'finder', 'faq', 'contact'];
       const scrollPosition = window.scrollY + 200;
 
       for (const section of sections) {
@@ -35,11 +49,17 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenSearch, onOpenJoinModal })
     };
 
     window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+      window.removeEventListener('nextgennect_record_added', updateCount);
+      window.removeEventListener('nextgennect_record_deleted', updateCount);
+      window.removeEventListener('nextgennect_records_cleared', updateCount);
+    };
   }, []);
 
   const navLinks = [
     { label: 'Domains', href: '#domains', id: 'domains' },
+    { label: 'Courses & Services', href: '#courses', id: 'courses' },
     { label: 'Mission & Team', href: '#mission', id: 'mission' },
     { label: 'Impact', href: '#impact', id: 'impact' },
     { label: 'Events', href: '#events', id: 'events' },
@@ -99,7 +119,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenSearch, onOpenJoinModal })
               })}
             </nav>
 
-            {/* Actions: Search, Theme Toggle, CTA */}
+            {/* Actions: Search, Records Portal, Theme Toggle, CTA */}
             <div className="hidden sm:flex items-center gap-2.5">
               {/* Quick Search */}
               <button
@@ -112,6 +132,22 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenSearch, onOpenJoinModal })
                 <span className="hidden xl:inline text-slate-500 font-mono-code text-[11px]">Search</span>
                 <kbd className="hidden xl:inline px-1.5 py-0.5 text-[10px] font-mono-code bg-slate-200/80 dark:bg-slate-800 rounded-md text-slate-500">⌘K</kbd>
               </button>
+
+              {/* Admin / Records Tracker Button */}
+              {onOpenAdmin && (
+                <button
+                  onClick={onOpenAdmin}
+                  className="px-3 py-2 rounded-2xl bg-indigo-50/80 dark:bg-slate-800/80 text-indigo-700 dark:text-cyan-300 hover:bg-indigo-100 dark:hover:bg-slate-700 border border-indigo-200/80 dark:border-slate-700 transition-all flex items-center gap-1.5 text-xs font-mono-code font-semibold"
+                  title="View Registered Students & Reserved Seats"
+                  aria-label="Admin Registry Tracker"
+                >
+                  <Database className="w-3.5 h-3.5" />
+                  <span className="hidden md:inline">Records</span>
+                  <span className="px-1.5 py-0.2 rounded-full bg-indigo-600 dark:bg-[#00E5FF] text-white dark:text-black text-[10px] font-bold">
+                    {recordCount}
+                  </span>
+                </button>
+              )}
 
               {/* Theme Toggle Button */}
               <button
@@ -142,6 +178,16 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenSearch, onOpenJoinModal })
 
             {/* Mobile menu trigger */}
             <div className="flex sm:hidden items-center gap-2">
+              {onOpenAdmin && (
+                <button
+                  onClick={onOpenAdmin}
+                  className="p-2 rounded-xl bg-indigo-50 dark:bg-slate-800 text-indigo-700 dark:text-cyan-300 border border-indigo-200 dark:border-slate-700"
+                  aria-label="Open Records"
+                >
+                  <Database className="w-4 h-4" />
+                </button>
+              )}
+
               <button
                 onClick={toggleTheme}
                 className="p-2 rounded-xl text-slate-600 dark:text-slate-300 border border-slate-200 dark:border-slate-800"
@@ -177,12 +223,12 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenSearch, onOpenJoinModal })
             className="fixed inset-0 bg-black/60 backdrop-blur-sm"
             onClick={() => setMobileMenuOpen(false)}
           />
-          <div className="fixed top-[70px] left-0 right-0 bg-[#080D1C] border-b border-[#00E5FF]/20 p-6 shadow-2xl space-y-4 animate-in slide-in-from-top-4 duration-200">
-            <div className="flex items-center justify-between pb-3 border-b border-slate-800">
-              <span className="text-xs font-mono-code uppercase text-[#00E5FF] tracking-wider flex items-center gap-2">
+          <div className="fixed top-[70px] left-0 right-0 bg-white dark:bg-[#080D1C] border-b border-slate-200/90 dark:border-[#00E5FF]/20 p-6 shadow-2xl space-y-4 animate-in slide-in-from-top-4 duration-200">
+            <div className="flex items-center justify-between pb-3 border-b border-slate-200 dark:border-slate-800">
+              <span className="text-xs font-mono-code uppercase text-indigo-700 dark:text-[#00E5FF] font-bold tracking-wider flex items-center gap-2">
                 <Terminal className="w-3.5 h-3.5" /> Next Gennect Navigation
               </span>
-              <span className="text-[11px] text-slate-400">Peshawar Chapter</span>
+              <span className="text-[11px] font-mono-code text-slate-500 dark:text-slate-400 font-medium">Peshawar Chapter</span>
             </div>
 
             <div className="grid grid-cols-2 gap-2">
@@ -193,8 +239,8 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenSearch, onOpenJoinModal })
                   onClick={(e) => handleNavClick(e, link.href)}
                   className={`p-2.5 rounded-xl text-xs font-semibold tracking-wide border transition-all flex items-center justify-between ${
                     activeSection === link.id
-                      ? 'bg-[#00E5FF]/15 border-[#00E5FF] text-[#00E5FF]'
-                      : 'bg-slate-900/60 border-slate-800 text-slate-300 hover:border-slate-700'
+                      ? 'bg-indigo-50 dark:bg-[#00E5FF]/15 border-indigo-500 dark:border-[#00E5FF] text-indigo-700 dark:text-[#00E5FF] font-bold'
+                      : 'bg-slate-50 dark:bg-slate-900/60 border-slate-200 dark:border-slate-800 text-slate-700 dark:text-slate-300 hover:border-slate-300 dark:hover:border-slate-700'
                   }`}
                 >
                   {link.label}
@@ -203,13 +249,26 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenSearch, onOpenJoinModal })
               ))}
             </div>
 
-            <div className="pt-2">
+            <div className="pt-2 space-y-2">
+              {onOpenAdmin && (
+                <button
+                  onClick={() => {
+                    setMobileMenuOpen(false);
+                    onOpenAdmin();
+                  }}
+                  className="w-full py-2.5 rounded-xl bg-indigo-50 dark:bg-slate-800 border border-indigo-200 dark:border-slate-700 text-indigo-700 dark:text-cyan-300 font-mono-code font-bold text-xs flex items-center justify-center gap-2"
+                >
+                  <Database className="w-4 h-4" />
+                  <span>View Records & Applications ({recordCount})</span>
+                </button>
+              )}
+
               <button
                 onClick={() => {
                   setMobileMenuOpen(false);
                   onOpenJoinModal();
                 }}
-                className="w-full py-3 rounded-xl bg-[#00E5FF] text-black font-display font-bold text-sm uppercase tracking-wider flex items-center justify-center gap-2 shadow-[0_0_20px_rgba(0,229,255,0.3)]"
+                className="w-full py-3 rounded-xl bg-slate-900 hover:bg-indigo-600 dark:bg-[#00E5FF] text-white dark:text-black font-display font-bold text-sm uppercase tracking-wider flex items-center justify-center gap-2 shadow-md dark:shadow-[0_0_20px_rgba(0,229,255,0.3)] transition-all"
               >
                 <Sparkles className="w-4 h-4" />
                 Join Next Gennect Community

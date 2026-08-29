@@ -14,6 +14,7 @@ export interface TeamMember {
   github?: string;
   linkedin?: string;
   twitter?: string;
+  instagram?: string;
   email?: string;
 }
 
@@ -102,3 +103,36 @@ export interface FaqItem {
   question: string;
   answer: string;
 }
+
+export interface TrainingCourse {
+  id: string;
+  title: string;
+  trackId: string;
+  trackName: string;
+  level: 'Beginner' | 'Intermediate' | 'Advanced' | 'All Levels';
+  duration: string;
+  mode: 'Hybrid (Peshawar + Online)' | 'Online Live' | 'In-Person Lab';
+  schedule: string;
+  cohort: string;
+  badge: string;
+  description: string;
+  highlights: string[];
+  curriculum: string[];
+  prerequisites: string;
+  certification: string;
+  tuition: string;
+}
+
+export interface ClientService {
+  id: string;
+  title: string;
+  category: 'Software Development' | 'AI & ML Solutions' | 'Corporate Training' | 'Talent Hiring' | 'Cybersecurity Audits';
+  iconName: string;
+  tagline: string;
+  description: string;
+  deliverables: string[];
+  turnaround: string;
+  idealFor: string;
+  popular?: boolean;
+}
+

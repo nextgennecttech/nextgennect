@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-import { FAQ_ITEMS } from '../data/mockData';
+import { FAQ_ITEMS, COMMUNITY_LINKS } from '../data/mockData';
+import { saveNewRecord } from '../services/recordManager';
 import { 
   HelpCircle, 
   Send, 
@@ -35,9 +36,18 @@ export const FaqContact: React.FC = () => {
     setOpenFaq(openFaq === id ? null : id);
   };
 
-  const handleContactSubmit = (e: React.FormEvent) => {
+  const handleContactSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!name || !email || !message) return;
+
+    await saveNewRecord({
+      type: 'contact_inquiry',
+      fullName: name,
+      email: email,
+      trackOrTopic: subject,
+      notesOrScope: message,
+      status: 'New'
+    });
 
     setFormSubmitted(true);
     confetti({
@@ -122,21 +132,21 @@ export const FaqContact: React.FC = () => {
 
         {/* Contact & Partner Form Section */}
         <div id="contact" className="pt-8">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 rounded-[40px] bg-[#F3F4F6] dark:bg-[#0A0F1E] border border-slate-200/80 dark:border-slate-800/80 p-8 sm:p-14 shadow-sm relative overflow-hidden bento-card">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 rounded-[40px] bg-slate-50/80 dark:bg-[#0A0F1E] border border-slate-200/90 dark:border-slate-800/80 p-8 sm:p-14 shadow-sm relative overflow-hidden bento-card">
             {/* Background glow */}
             <div className="absolute top-0 right-0 w-80 h-80 bg-indigo-500/5 dark:bg-cyan-500/5 rounded-full blur-3xl pointer-events-none" />
 
             {/* Left Column: Info & Details */}
             <div className="lg:col-span-5 space-y-6 flex flex-col justify-between">
               <div className="space-y-4">
-                <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-indigo-50 dark:bg-cyan-500/10 text-indigo-600 dark:text-[#00E5FF] text-[10px] font-mono-code font-bold uppercase tracking-widest border border-indigo-100 dark:border-cyan-500/20">
+                <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-indigo-50 dark:bg-cyan-500/10 text-indigo-700 dark:text-[#00E5FF] text-[10px] font-mono-code font-bold uppercase tracking-widest border border-indigo-200/80 dark:border-cyan-500/20">
                   <MessageSquare className="w-3.5 h-3.5" />
                   <span>GET IN TOUCH</span>
                 </div>
                 <h3 className="text-2xl sm:text-4xl font-display font-extrabold text-slate-900 dark:text-white">
                   Let&apos;s Build Together
                 </h3>
-                <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-400 leading-relaxed">
+                <p className="text-xs sm:text-sm text-slate-700 dark:text-slate-400 leading-relaxed font-normal">
                   Whether you are a university student aiming to join, an industry engineer eager to mentor, or a corporate partner seeking top talent — reach out to our team in Peshawar.
                 </p>
               </div>
@@ -144,44 +154,46 @@ export const FaqContact: React.FC = () => {
               {/* Direct Info list */}
               <div className="space-y-4 text-xs font-mono-code text-slate-700 dark:text-slate-300">
                 <div className="flex items-start gap-3">
-                  <div className="w-9 h-9 rounded-2xl bg-indigo-50 dark:bg-cyan-500/10 text-indigo-600 dark:text-[#00E5FF] flex items-center justify-center shrink-0 border border-indigo-100 dark:border-cyan-500/20">
+                  <div className="w-9 h-9 rounded-2xl bg-indigo-50 dark:bg-cyan-500/10 text-indigo-700 dark:text-[#00E5FF] flex items-center justify-center shrink-0 border border-indigo-200/80 dark:border-cyan-500/20">
                     <MapPin className="w-4 h-4" />
                   </div>
                   <div>
                     <div className="font-bold text-slate-900 dark:text-white">Headquarters</div>
-                    <div className="text-slate-500 text-[11px]">Peshawar, Khyber Pakhtunkhwa, Pakistan</div>
+                    <div className="text-slate-600 dark:text-slate-500 text-[11px]">Peshawar, Khyber Pakhtunkhwa, Pakistan</div>
                   </div>
                 </div>
 
                 <div className="flex items-start gap-3">
-                  <div className="w-9 h-9 rounded-2xl bg-purple-500/10 text-purple-500 flex items-center justify-center shrink-0 border border-purple-500/20">
+                  <div className="w-9 h-9 rounded-2xl bg-indigo-50 dark:bg-cyan-500/10 text-indigo-700 dark:text-[#00E5FF] flex items-center justify-center shrink-0 border border-indigo-200/80 dark:border-cyan-500/20">
                     <Mail className="w-4 h-4" />
                   </div>
                   <div>
                     <div className="font-bold text-slate-900 dark:text-white">Official Correspondence</div>
-                    <div className="text-slate-500 text-[11px]">hello@nextgennect.com • atif@nextgennect.com</div>
+                    <a href="mailto:nextgennect.tech@gmail.com" className="text-indigo-600 dark:text-cyan-300 hover:underline text-[12px] font-mono-code font-bold">
+                      nextgennect.tech@gmail.com
+                    </a>
                   </div>
                 </div>
 
                 <div className="flex items-start gap-3">
-                  <div className="w-9 h-9 rounded-2xl bg-emerald-500/10 text-emerald-500 flex items-center justify-center shrink-0 border border-emerald-500/20">
+                  <div className="w-9 h-9 rounded-2xl bg-emerald-50 dark:bg-emerald-500/10 text-emerald-700 dark:text-emerald-500 flex items-center justify-center shrink-0 border border-emerald-200 dark:border-emerald-500/20">
                     <Building2 className="w-4 h-4" />
                   </div>
                   <div>
                     <div className="font-bold text-slate-900 dark:text-white">University Chapters</div>
-                    <div className="text-slate-500 text-[11px]">Active in 15+ campuses across Pakistan</div>
+                    <div className="text-slate-600 dark:text-slate-500 text-[11px]">Active in 15+ campuses across Pakistan</div>
                   </div>
                 </div>
               </div>
 
-              <div className="p-4 rounded-2xl bg-white dark:bg-[#070B18] border border-slate-200/80 dark:border-slate-800 text-xs text-slate-600 dark:text-slate-400 flex items-center gap-2.5">
+              <div className="p-4 rounded-2xl bg-white dark:bg-[#070B18] border border-slate-200/90 dark:border-slate-800 text-xs text-slate-700 dark:text-slate-400 flex items-center gap-2.5 font-medium">
                 <Sparkles className="w-4 h-4 text-indigo-600 dark:text-[#00E5FF] shrink-0" />
                 <span>Typical response time: Within 24 business hours.</span>
               </div>
             </div>
 
             {/* Right Column: Interactive Form */}
-            <div className="lg:col-span-7 bg-white dark:bg-[#070B18] border border-slate-200/80 dark:border-slate-800/90 rounded-[32px] p-6 sm:p-8 shadow-sm">
+            <div className="lg:col-span-7 bg-white dark:bg-[#070B18] border border-slate-200/90 dark:border-slate-800/90 rounded-[32px] p-6 sm:p-8 shadow-sm">
               {formSubmitted ? (
                 <div className="py-12 text-center space-y-4 animate-in zoom-in-95 duration-200">
                   <div className="w-16 h-16 rounded-full bg-emerald-500/10 border border-emerald-500 text-emerald-500 flex items-center justify-center mx-auto shadow-sm">

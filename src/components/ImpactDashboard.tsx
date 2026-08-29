@@ -48,7 +48,7 @@ export const ImpactDashboard: React.FC = () => {
           <h2 className="text-3xl sm:text-5xl font-display font-extrabold text-slate-900 dark:text-white tracking-tight">
             Impact <span className="text-indigo-600 dark:text-[#00E5FF]">Dashboard</span>
           </h2>
-          <p className="text-base sm:text-lg text-slate-600 dark:text-slate-300">
+          <p className="text-base sm:text-lg text-slate-700 dark:text-slate-300 font-normal">
             Real data from our cohorts, hackathons, open-source initiatives, and university student chapters across Peshawar and Pakistan.
           </p>
         </div>

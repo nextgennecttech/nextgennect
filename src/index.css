@@ -1,5 +1,7 @@
 @import "tailwindcss";
 
+@custom-variant dark (&:where(.dark, .dark *));
+
 @layer base {
   :root {
     --font-sans: 'Plus Jakarta Sans', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
@@ -11,12 +13,22 @@
     --color-indigo-accent: #6366F1;
     --color-navy-dark: #0A0F1D;
     --color-purple-accent: #7C3AED;
-    --color-bento-light-bg: #F3F4F6;
+    --color-bento-light-bg: #F8FAFC;
   }
 
   html {
     scroll-behavior: smooth;
     font-family: var(--font-sans);
+  }
+
+  html.light {
+    background-color: #FFFFFF;
+    color: #0F172A;
+  }
+
+  html.dark {
+    background-color: #050816;
+    color: #F8FAFC;
   }
 
   body {
@@ -112,22 +124,62 @@
   background: #00E5FF;
 }
 
-/* Subtle animation pulses */
+/* Subtle animation pulses & attractive motion */
 @keyframes float-slow {
-  0%, 100% { transform: translateY(0px); }
-  50% { transform: translateY(-8px); }
+  0%, 100% { transform: translateY(0px) rotate(0deg); }
+  50% { transform: translateY(-8px) rotate(0.5deg); }
 }
 
-.animate-float-slow {
-  animation: float-slow 4s ease-in-out infinite;
+@keyframes float-reverse {
+  0%, 100% { transform: translateY(0px) rotate(0deg); }
+  50% { transform: translateY(8px) rotate(-0.5deg); }
 }
 
 @keyframes pulse-cyan {
-  0%, 100% { opacity: 0.4; }
-  50% { opacity: 0.8; }
+  0%, 100% { opacity: 0.4; transform: scale(1); }
+  50% { opacity: 0.85; transform: scale(1.05); }
+}
+
+@keyframes radar-ping {
+  0% { transform: scale(0.95); opacity: 0.8; }
+  70% { transform: scale(1.8); opacity: 0; }
+  100% { transform: scale(2.2); opacity: 0; }
+}
+
+@keyframes shimmer {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(200%); }
+}
+
+@keyframes gradient-drift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+.animate-float-slow {
+  animation: float-slow 5s ease-in-out infinite;
+}
+
+.animate-float-reverse {
+  animation: float-reverse 6s ease-in-out infinite;
 }
 
 .animate-pulse-cyan {
   animation: pulse-cyan 3s ease-in-out infinite;
 }
+
+.animate-radar-ping {
+  animation: radar-ping 2.5s cubic-bezier(0, 0, 0.2, 1) infinite;
+}
+
+.animate-shimmer {
+  animation: shimmer 2.5s infinite;
+}
+
+.animate-gradient-drift {
+  background-size: 200% 200%;
+  animation: gradient-drift 8s ease infinite;
+}
+
 

@@ -1,53 +1,61 @@
-import { TeamMember, TechDomain, StatItem, EventItem, Testimonial, CoreValue, FaqItem } from '../types';
+import { TeamMember, TechDomain, StatItem, EventItem, Testimonial, CoreValue, FaqItem, TrainingCourse, ClientService } from '../types';
+
+export const COMMUNITY_LINKS = {
+  email: 'nextgennect.tech@gmail.com',
+  linkedin: 'https://www.linkedin.com/company/next-gennect/posts?lipi=urn%3Ali%3Apage%3Ad_flagship3_detail_base%3BFNkVMAd1QCa5C8XULG%2FcRw%3D%3D',
+  instagram: 'https://www.instagram.com/nextgennect/',
+  github: 'https://github.com/nextgennecttech',
+  location: 'Peshawar, Khyber Pakhtunkhwa, Pakistan',
+};
 
 export const LEADERSHIP_TEAM: TeamMember[] = [
   {
     id: 'aliyan-shah',
     name: 'Aliyan Shah',
-    role: 'Founder & Chief Executive Officer',
-    title: 'Visionary Leader & Technology Evangelist',
-    bio: 'Pioneering youth empowerment and technological advancement across KP and Pakistan through community-first leadership and ecosystem building.',
-    detailedBio: 'Aliyan founded Next Gennect with a singular mission: to democratize high-tier engineering skills and unlock world-class career pathways for passionate youth in Peshawar and Pakistan. With deep experience in community architecture and tech ecosystems, he spearheads strategic partnerships with universities and international tech hubs.',
+    role: 'Chief Executive Officer',
+    title: 'Founder & Chief Executive Officer',
+    bio: 'Pioneering youth empowerment, tech ecosystems, and high-impact software engineering initiatives across Peshawar and Pakistan.',
+    detailedBio: 'Aliyan founded Next Gennect with a singular mission: to democratize high-tier engineering skills and unlock world-class career pathways for passionate youth in Peshawar and Pakistan. With deep experience in community architecture and tech ecosystems, he spearheads strategic partnerships with universities, incubator hubs, and international tech networks.',
     avatar: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=400&q=80',
     specialties: ['Ecosystem Architecture', 'Product Strategy', 'Youth Leadership', 'Tech Advocacy'],
     gradient: 'from-cyan-500 to-blue-600',
-    badge: 'Founder',
-    linkedin: 'https://linkedin.com',
-    github: 'https://github.com',
-    twitter: 'https://twitter.com',
-    email: 'aliyan@nextgennect.com'
-  },
-  {
-    id: 'fatima-zahra',
-    name: 'Fatima Zahra',
-    role: 'Chief Technology Officer',
-    title: 'Systems Architect & AI Engineering Lead',
-    bio: 'Architecting cutting-edge curricula, hands-on engineering tracks, and technical innovation labs that bridge academia and industry.',
-    detailedBio: 'Fatima oversees the technical roadmap and innovation standards at Next Gennect. She is an avid advocate for women in deep tech and specializes in distributed systems, machine learning engineering, and secure infrastructure design. Under her guidance, Next Gennect members have shipped 80+ open-source and production-ready applications.',
-    avatar: 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=400&q=80',
-    specialties: ['Distributed Systems', 'Applied AI/ML', 'Curriculum Engineering', 'Cloud Native'],
-    gradient: 'from-purple-500 to-indigo-600',
-    badge: 'CTO',
-    linkedin: 'https://linkedin.com',
-    github: 'https://github.com',
-    twitter: 'https://twitter.com',
-    email: 'fatima@nextgennect.com'
+    badge: 'CEO',
+    linkedin: 'https://www.linkedin.com/company/next-gennect/posts?lipi=urn%3Ali%3Apage%3Ad_flagship3_detail_base%3BFNkVMAd1QCa5C8XULG%2FcRw%3D%3D',
+    github: 'https://github.com/nextgennecttech',
+    instagram: 'https://www.instagram.com/nextgennect/',
+    email: 'nextgennect.tech@gmail.com'
   },
   {
     id: 'muhammad-atif',
     name: 'Muhammad Atif',
     role: 'Chief Operating Officer',
-    title: 'Operations Director & Growth Strategist',
+    title: 'Chief Operating Officer & Growth Strategist',
     bio: 'Scaling high-impact workshops, hackathons, university chapter networks, and mentor pipelines across Khyber Pakhtunkhwa.',
     detailedBio: 'Atif drives operational excellence, university chapter scaling, and community logistics for Next Gennect. Bringing relentless execution and passion for student engagement, he has orchestrated 45+ multi-campus hackathons and bootcamps, connecting hundreds of students with industry mentors.',
     avatar: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=400&q=80',
     specialties: ['Operations Scaling', 'Community Growth', 'Hackathon Logistics', 'Talent Mentorship'],
     gradient: 'from-teal-400 to-emerald-600',
     badge: 'COO',
-    linkedin: 'https://linkedin.com',
-    github: 'https://github.com',
-    twitter: 'https://twitter.com',
-    email: 'atif@nextgennect.com'
+    linkedin: 'https://www.linkedin.com/company/next-gennect/posts?lipi=urn%3Ali%3Apage%3Ad_flagship3_detail_base%3BFNkVMAd1QCa5C8XULG%2FcRw%3D%3D',
+    github: 'https://github.com/nextgennecttech',
+    instagram: 'https://www.instagram.com/nextgennect/',
+    email: 'nextgennect.tech@gmail.com'
+  },
+  {
+    id: 'fatima-zahra',
+    name: 'Fatima Zahra',
+    role: 'Chief Technology Officer',
+    title: 'Chief Technology Officer & AI Engineering Lead',
+    bio: 'Architecting cutting-edge curricula, hands-on engineering tracks, and technical innovation labs that bridge academia and industry.',
+    detailedBio: 'Fatima oversees the technical roadmap and innovation standards at Next Gennect. She is an avid advocate for women in deep tech and specializes in distributed systems, machine learning engineering, and secure infrastructure design. Under her guidance, Next Gennect members have shipped 80+ open-source and production-ready applications.',
+    avatar: 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=400&q=80',
+    specialties: ['Distributed Systems', 'Applied AI/ML', 'Curriculum Engineering', 'Cloud Native'],
+    gradient: 'from-purple-500 to-indigo-600',
+    badge: 'CTO',
+    linkedin: 'https://www.linkedin.com/company/next-gennect/posts?lipi=urn%3Ali%3Apage%3Ad_flagship3_detail_base%3BFNkVMAd1QCa5C8XULG%2FcRw%3D%3D',
+    github: 'https://github.com/nextgennecttech',
+    instagram: 'https://www.instagram.com/nextgennect/',
+    email: 'nextgennect.tech@gmail.com'
   }
 ];
 
@@ -465,3 +473,205 @@ export const SKILLS_DISTRIBUTION = [
   { name: 'Cybersecurity & CTFs', percentage: 20, color: '#7C3AED', count: '250+ defenders' },
   { name: 'Cloud Infrastructure', percentage: 17, color: '#A855F7', count: '210+ architects' }
 ];
+
+export const TRAINING_COURSES: TrainingCourse[] = [
+  {
+    id: 'course-ai-agents',
+    title: 'Applied Generative AI & Autonomous Agents Masterclass',
+    trackId: 'ai-ml',
+    trackName: 'Artificial Intelligence & ML',
+    level: 'Intermediate',
+    duration: '12 Weeks (Intensive)',
+    mode: 'Hybrid (Peshawar + Online)',
+    schedule: 'Saturdays & Sundays (3 hrs/session) + Midweek Office Hours',
+    cohort: 'Cohort 04 (Summer 2026)',
+    badge: 'Flagship Training',
+    description: 'Build production-ready LLM pipelines, Retrieval-Augmented Generation (RAG) engines, LangChain agent swarms, and deploy scalable inference servers with Triton and FastAPI.',
+    highlights: [
+      'Hands-on PyTorch & Hugging Face fine-tuning',
+      'Multi-agent architectures with AutoGen & LangGraph',
+      'Vector Databases: Milvus, Pinecone & ChromaDB',
+      'GPU Cloud Clusters provided for student projects'
+    ],
+    curriculum: [
+      'Module 1: Vector Math, PyTorch & Transformers Architecture',
+      'Module 2: RAG, Embeddings, Context Chunking & Re-ranking',
+      'Module 3: Autonomous Agent Workflows & Tool-use Calling',
+      'Module 4: Model Quantization, Fine-Tuning LoRA & Production MLOps'
+    ],
+    prerequisites: 'Basic Python programming & fundamental linear algebra familiarity.',
+    certification: 'Verified Next Gennect AI Engineer Certificate + GitHub Portfolio Capstone',
+    tuition: '100% Free Scholarship / Community Funded'
+  },
+  {
+    id: 'course-fullstack-cloud',
+    title: 'Modern Full-Stack Engineering & Microservices Bootcamp',
+    trackId: 'software-dev',
+    trackName: 'Full-Stack Software Dev',
+    level: 'All Levels',
+    duration: '12 Weeks (Hands-on)',
+    mode: 'Hybrid (Peshawar + Online)',
+    schedule: 'Weekends + Collaborative GitHub Code Reviews',
+    cohort: 'Cohort 06 (Summer 2026)',
+    badge: 'High Employment Rate',
+    description: 'From React 19 & Next.js App Router to distributed PostgreSQL architectures, Redis caching, Tailwind CSS, Docker microservices, and GraphQL APIs.',
+    highlights: [
+      'Production TypeScript & React 19 Ecosystem',
+      'High-performance Node/Express & Go microservices',
+      'PostgreSQL database indexing & ORM migrations',
+      'CI/CD Pipelines, GitHub Actions & Vercel/Cloud Run deployments'
+    ],
+    curriculum: [
+      'Module 1: TypeScript Deep Dive & Modern React UI Architecture',
+      'Module 2: RESTful & GraphQL Backend Design with Express/Node',
+      'Module 3: Relational DB Modeling, Redis Caching & Auth Systems',
+      'Module 4: Microservices, Docker Containers & Serverless Cloud'
+    ],
+    prerequisites: 'Foundational HTML, CSS and JavaScript understanding.',
+    certification: 'Production Full-Stack Developer Certificate + Verified Capstone',
+    tuition: '100% Free Open Access / Community Sponsored'
+  },
+  {
+    id: 'course-cyber-pentest',
+    title: 'Offensive Cybersecurity, CTF Warfare & Web Pentesting',
+    trackId: 'cybersecurity',
+    trackName: 'Cybersecurity & Defense',
+    level: 'All Levels',
+    duration: '10 Weeks (Lab-Intensive)',
+    mode: 'Hybrid (Peshawar + Online)',
+    schedule: 'Bi-weekly Labs + Weekend Live CTF Challenges',
+    cohort: 'Cohort 03 (Summer 2026)',
+    badge: 'Hands-on War Games',
+    description: 'Learn real penetration testing workflows, binary exploitation, OWASP Top 10 web vulnerabilities, Burp Suite automation, network forensics, and ethical disclosure.',
+    highlights: [
+      'Live attack/defense sandbox arena access',
+      'OWASP Top 10 deep exploitation labs',
+      'Reverse engineering & Ghidra binary analysis',
+      'Preparation for global CTF tournaments & CEH/OSCP paths'
+    ],
+    curriculum: [
+      'Module 1: Networking Protocols, Packet Analysis & Linux Internals',
+      'Module 2: Web App Penetration Testing (SQLi, XSS, SSRF, IDOR)',
+      'Module 3: Cryptography, Steganography & Binary Exploitation',
+      'Module 4: Threat Hunting, Incident Response & Bug Bounty Methodology'
+    ],
+    prerequisites: 'Basic command line and networking concepts.',
+    certification: 'Certified Next Gennect Cyber Defense Specialist',
+    tuition: '100% Free / Youth Mentorship Funded'
+  },
+  {
+    id: 'course-devops-cloud',
+    title: 'Cloud Native Architecture, Kubernetes & GitOps Bootcamp',
+    trackId: 'cloud-devops',
+    trackName: 'Cloud & Infrastructure',
+    level: 'Intermediate',
+    duration: '8 Weeks',
+    mode: 'Online Live',
+    schedule: 'Saturdays & Mid-week Lab Clinics',
+    cohort: 'Cohort 02 (Summer 2026)',
+    badge: 'High Industry Demand',
+    description: 'Master container orchestration with Kubernetes, Infrastructure as Code with Terraform, Prometheus/Grafana observability, and automated GitOps deployment pipelines.',
+    highlights: [
+      'Kubernetes cluster provisioning (k8s & Helm charts)',
+      'Terraform multi-cloud provisioning (AWS & GCP)',
+      'ArgoCD GitOps automated deployment workflows',
+      'Distributed telemetry with OpenTelemetry & Grafana'
+    ],
+    curriculum: [
+      'Module 1: Docker Containerization Best Practices & Multi-stage Builds',
+      'Module 2: Kubernetes Architecture, Pods, Services & Ingress Controllers',
+      'Module 3: Infrastructure as Code (Terraform) & Cloud Security',
+      'Module 4: Observability, SRE Principles & Automated Rollbacks'
+    ],
+    prerequisites: 'Linux terminal comfort & basic programming experience.',
+    certification: 'Cloud Native DevOps Practitioner Credential',
+    tuition: '100% Free / Open Access'
+  }
+];
+
+export const CLIENT_SERVICES: ClientService[] = [
+  {
+    id: 'service-custom-dev',
+    title: 'Custom Full-Stack Software & Web Development',
+    category: 'Software Development',
+    iconName: 'Code2',
+    tagline: 'Modern, high-performance web applications, APIs, and cloud systems crafted by vetted top talent.',
+    description: 'We design and build bespoke software solutions, SaaS platforms, internal management portals, and mobile-friendly web apps for startups, SMEs, educational institutions, and NGOs.',
+    deliverables: [
+      'Full-stack web application (React/Next.js + Node/Go)',
+      'Clean TypeScript codebase with 100% test coverage',
+      'Cloud deployment (Vercel, AWS, GCP, or Cloud Run)',
+      'User documentation & 3 months maintenance support'
+    ],
+    turnaround: '2 to 8 Weeks (Agile Sprints)',
+    idealFor: 'Startups, Businesses, NGOs, Healthcare Clinics, and Educational Institutes.',
+    popular: true
+  },
+  {
+    id: 'service-ai-solutions',
+    title: 'Applied AI, Intelligent RAG & Automation Solutions',
+    category: 'AI & ML Solutions',
+    iconName: 'Brain',
+    tagline: 'Custom generative AI assistants, enterprise knowledge search, and predictive models.',
+    description: 'Integrate state-of-the-art AI into your operational workflows: customer support bots, custom document analyzers, semantic search over company knowledge bases, and computer vision systems.',
+    deliverables: [
+      'Custom fine-tuned AI model or RAG pipeline',
+      'Secure vector database and context indexing',
+      'Web-based interactive dashboard with audit logs',
+      'API gateway for seamless CRM/ERP integration'
+    ],
+    turnaround: '3 to 6 Weeks',
+    idealFor: 'Enterprises, Legal/Medical Clinics, E-commerce, and Customer Support Hubs.',
+    popular: true
+  },
+  {
+    id: 'service-corp-training',
+    title: 'Corporate & University Tech Bootcamps / Hackathons',
+    category: 'Corporate Training',
+    iconName: 'GraduationCap',
+    tagline: 'On-campus or corporate technical workshops, employee upskilling, and custom hackathons.',
+    description: 'Elevate your engineering team or student body with customized hands-on bootcamps in AI, Cybersecurity, Cloud Native, or modern Web Development led by industry practitioners.',
+    deliverables: [
+      'Customized curriculum tailored to your organizational stack',
+      'Live interactive coding labs & sandboxed exercises',
+      'Hackathon judging, logistics & mentor coordination',
+      'Digital attendance & skill competency certificates'
+    ],
+    turnaround: '1-Day Intensive to 4-Week Programs',
+    idealFor: 'Universities, Tech Incubators, Software Houses, and Corporate R&D Teams.'
+  },
+  {
+    id: 'service-talent-hire',
+    title: 'Hire Vetted Student Tech Talent & Pre-Trained Interns',
+    category: 'Talent Hiring',
+    iconName: 'Users',
+    tagline: 'Connect directly with top-tier student developers, AI researchers, and cybersecurity builders.',
+    description: 'Skip prolonged hiring cycles. Access Next Gennect&apos;s rigorously vetted pool of young developers who have shipped verified production capstones and open-source contributions.',
+    deliverables: [
+      'Pre-screened candidates matched to your tech stack',
+      'Verified GitHub portfolios and code assessments',
+      'Direct interview scheduling with zero placement fees for students',
+      'Support during internship-to-hire transition'
+    ],
+    turnaround: '3 to 7 Days Candidate Matching',
+    idealFor: 'Tech Companies, Remote Agencies, Funded Startups, and Software Houses.',
+    popular: true
+  },
+  {
+    id: 'service-cyber-audit',
+    title: 'Web Application Pentesting & Security Audits',
+    category: 'Cybersecurity Audits',
+    iconName: 'ShieldCheck',
+    tagline: 'Identify vulnerabilities before attackers do with detailed penetration testing reports.',
+    description: 'Our ethical security teams perform comprehensive penetration tests on your web applications, APIs, and cloud infrastructure, delivering actionable remediation roadmaps.',
+    deliverables: [
+      'OWASP Top 10 vulnerability assessment',
+      'Executive summary & technical vulnerability report',
+      'Step-by-step remediation guide for developers',
+      'Post-fix verification and re-testing certification'
+    ],
+    turnaround: '1 to 2 Weeks',
+    idealFor: 'Fintech, Healthtech, E-commerce, and Organizations handling user data.'
+  }
+];
+

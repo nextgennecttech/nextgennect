@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { NetworkCanvas } from './NetworkCanvas';
+import { COMMUNITY_LINKS } from '../data/mockData';
 import { 
   ArrowRight, 
   Play, 
@@ -14,7 +15,11 @@ import {
   Activity,
   Globe2,
   Zap,
-  TrendingUp
+  TrendingUp,
+  Linkedin,
+  Instagram,
+  Github,
+  Mail
 } from 'lucide-react';
 
 interface HeroProps {
@@ -30,9 +35,9 @@ export const Hero: React.FC<HeroProps> = ({ onOpenJoinModal, onExploreDomains })
       {/* Background Interactive 3D Particle Network Canvas */}
       <NetworkCanvas />
 
-      {/* Cyber Grid & Ambient Radial Gradients */}
+      {/* Cyber Grid & Ambient Radial Gradients with subtle floating motion */}
       <div className="absolute inset-0 cyber-grid dark:cyber-grid opacity-25 pointer-events-none" />
-      <div className="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[400px] bg-gradient-to-tr from-indigo-500/10 via-[#00E5FF]/10 to-transparent rounded-full blur-3xl pointer-events-none" />
+      <div className="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[400px] bg-gradient-to-tr from-indigo-500/10 via-[#00E5FF]/15 to-transparent rounded-full blur-3xl pointer-events-none animate-pulse-cyan" />
 
       {/* Bento Grid Main Container */}
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full space-y-6">
@@ -42,38 +47,80 @@ export const Hero: React.FC<HeroProps> = ({ onOpenJoinModal, onExploreDomains })
           
           {/* Bento Cell 1: Primary Hero Core (col-span-12 lg:col-span-8) */}
           <div className="md:col-span-12 lg:col-span-8 bg-white dark:bg-[#0A0F1E] rounded-[36px] sm:rounded-[44px] p-8 sm:p-12 border border-slate-200/80 dark:border-slate-800/80 shadow-sm relative overflow-hidden flex flex-col justify-between group bento-card">
+            
+            {/* Floating Decorative Glow Badges */}
+            <div className="absolute top-6 right-8 hidden sm:flex items-center gap-2 animate-float-slow pointer-events-none">
+              <span className="px-3 py-1.5 rounded-2xl bg-cyan-500/10 dark:bg-cyan-500/20 text-[#00E5FF] border border-cyan-500/30 text-[10px] font-mono-code font-bold backdrop-blur-md shadow-sm">
+                ⚡ Tech Community
+              </span>
+            </div>
+
             <div className="relative z-10 space-y-6">
               
-              {/* Eyebrow Pill */}
+              {/* Eyebrow Pills & Social Quick Connect */}
               <div className="flex flex-wrap items-center gap-2">
                 <span className="px-3.5 py-1 bg-indigo-50 dark:bg-indigo-950/60 border border-indigo-100 dark:border-indigo-900/60 text-indigo-600 dark:text-cyan-400 text-[10px] font-bold uppercase tracking-widest rounded-full flex items-center gap-1.5 font-mono-code">
-                  <span className="w-2 h-2 rounded-full bg-indigo-600 dark:bg-[#00E5FF] animate-ping" />
+                  <span className="relative flex h-2 w-2">
+                    <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#00E5FF] opacity-75"></span>
+                    <span className="relative inline-flex rounded-full h-2 w-2 bg-indigo-600 dark:bg-[#00E5FF]"></span>
+                  </span>
                   Peshawar Youth Tech Ecosystem
                 </span>
 
-                <span className="px-3 py-1 bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 text-[10px] font-bold uppercase tracking-widest rounded-full hidden sm:inline-flex items-center gap-1 font-mono-code">
+                <span className="px-3 py-1 bg-slate-100 dark:bg-slate-800/90 text-slate-600 dark:text-slate-300 text-[10px] font-bold uppercase tracking-widest rounded-full hidden sm:inline-flex items-center gap-1 font-mono-code">
                   <Sparkles className="w-3 h-3 text-purple-400" />
                   1,200+ Builders Strong
                 </span>
+
+                {/* Micro Social Pills */}
+                <div className="flex items-center gap-1.5 pl-1">
+                  <a
+                    href={COMMUNITY_LINKS.linkedin}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="p-1 rounded-lg text-slate-400 hover:text-[#00E5FF] hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors"
+                    title="Next Gennect LinkedIn"
+                  >
+                    <Linkedin className="w-3.5 h-3.5" />
+                  </a>
+                  <a
+                    href={COMMUNITY_LINKS.instagram}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="p-1 rounded-lg text-slate-400 hover:text-[#EC4899] hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors"
+                    title="Next Gennect Instagram"
+                  >
+                    <Instagram className="w-3.5 h-3.5" />
+                  </a>
+                  <a
+                    href={COMMUNITY_LINKS.github}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="p-1 rounded-lg text-slate-400 hover:text-white hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors"
+                    title="Next Gennect GitHub"
+                  >
+                    <Github className="w-3.5 h-3.5" />
+                  </a>
+                </div>
               </div>
 
               {/* Main Headline */}
               <div className="space-y-3">
                 <h1 className="text-4xl sm:text-6xl lg:text-7xl font-black font-display text-slate-900 dark:text-white leading-[0.98] tracking-tight">
                   Engineering The <br />
-                  <span className="text-indigo-600 dark:text-[#00E5FF]">Next Generation.</span>
+                  <span className="text-indigo-600 dark:text-[#00E5FF] text-gradient-cyan">Next Generation.</span>
                 </h1>
                 
-                <p className="text-sm sm:text-base text-slate-600 dark:text-slate-400 max-w-xl font-medium leading-relaxed pt-2">
-                  Next Gennect is Peshawar&apos;s youth-led deep-tech collective. We bridge academia and production software engineering, AI systems, cybersecurity CTFs, and hardware innovation.
+                <p className="text-sm sm:text-base text-slate-700 dark:text-slate-300 max-w-xl font-normal leading-relaxed pt-2">
+                  Next Gennect is Peshawar&apos;s youth-led deep-tech collective. We empower student builders, engineering talent, and researchers through AI systems, cybersecurity CTFs, modern web frameworks, and hands-on workshops.
                 </p>
               </div>
 
-              {/* Action Buttons */}
+              {/* Action Buttons with attractive hover movement */}
               <div className="flex flex-wrap items-center gap-3 pt-2">
                 <button
                   onClick={onOpenJoinModal}
-                  className="px-6 py-3.5 bg-slate-900 dark:bg-[#00E5FF] text-white dark:text-black hover:bg-indigo-600 dark:hover:bg-[#38BDF8] rounded-full text-xs font-bold font-display uppercase tracking-wider shadow-lg shadow-slate-900/15 dark:shadow-cyan-500/25 transition-all flex items-center gap-2 active:scale-95 group/btn"
+                  className="px-6 py-3.5 bg-slate-900 dark:bg-[#00E5FF] text-white dark:text-black hover:bg-indigo-600 dark:hover:bg-[#38BDF8] rounded-full text-xs font-bold font-display uppercase tracking-wider shadow-lg shadow-slate-900/15 dark:shadow-cyan-500/25 transition-all flex items-center gap-2 active:scale-95 group/btn hover:scale-105"
                 >
                   <span>Join Community</span>
                   <ArrowRight className="w-3.5 h-3.5 group-hover/btn:translate-x-1 transition-transform" />
@@ -81,7 +128,7 @@ export const Hero: React.FC<HeroProps> = ({ onOpenJoinModal, onExploreDomains })
 
                 <button
                   onClick={onExploreDomains}
-                  className="px-5 py-3.5 bg-slate-100 dark:bg-slate-900/90 text-slate-800 dark:text-slate-200 hover:bg-slate-200 dark:hover:bg-slate-800 border border-slate-200 dark:border-slate-800 rounded-full text-xs font-semibold tracking-wide transition-all flex items-center gap-2"
+                  className="px-5 py-3.5 bg-slate-100 dark:bg-slate-900/90 text-slate-800 dark:text-slate-200 hover:bg-slate-200 dark:hover:bg-slate-800 border border-slate-200 dark:border-slate-800 rounded-full text-xs font-semibold tracking-wide transition-all flex items-center gap-2 hover:scale-105"
                 >
                   <Terminal className="w-3.5 h-3.5 text-indigo-600 dark:text-[#00E5FF]" />
                   <span>Explore Tracks</span>
@@ -91,7 +138,7 @@ export const Hero: React.FC<HeroProps> = ({ onOpenJoinModal, onExploreDomains })
                   onClick={() => setShowVideoModal(true)}
                   className="px-4 py-3.5 text-slate-600 dark:text-slate-400 hover:text-indigo-600 dark:hover:text-[#00E5FF] rounded-full text-xs font-semibold tracking-wide transition-colors flex items-center gap-2"
                 >
-                  <div className="w-6 h-6 rounded-full bg-indigo-50 dark:bg-cyan-500/10 text-indigo-600 dark:text-[#00E5FF] flex items-center justify-center">
+                  <div className="w-6 h-6 rounded-full bg-indigo-50 dark:bg-cyan-500/10 text-indigo-600 dark:text-[#00E5FF] flex items-center justify-center animate-pulse">
                     <Play className="w-3 h-3 fill-current ml-0.5" />
                   </div>
                   <span>Watch Story</span>
@@ -99,31 +146,31 @@ export const Hero: React.FC<HeroProps> = ({ onOpenJoinModal, onExploreDomains })
               </div>
             </div>
 
-            {/* Interactive Bento Visual Bar Strip */}
+            {/* Interactive Bento Visual Bar Strip with animated height oscillation */}
             <div className="relative z-10 flex items-end justify-between mt-10 pt-6 border-t border-slate-100 dark:border-slate-800/80 gap-2 sm:gap-3">
-              <div className="text-center w-full">
-                <div className="h-16 sm:h-20 bg-slate-100 dark:bg-slate-900 rounded-2xl flex items-end justify-center p-1.5">
-                  <div className="w-full h-8 bg-slate-300 dark:bg-slate-700 rounded-xl" />
+              <div className="text-center w-full group/bar cursor-pointer">
+                <div className="h-16 sm:h-20 bg-slate-100 dark:bg-slate-900 rounded-2xl flex items-end justify-center p-1.5 transition-all group-hover/bar:bg-slate-200 dark:group-hover/bar:bg-slate-800">
+                  <div className="w-full h-8 bg-slate-300 dark:bg-slate-700 rounded-xl group-hover/bar:h-12 transition-all duration-300" />
                 </div>
                 <span className="text-[10px] font-mono-code text-slate-400 block mt-1.5">Q1 Hub</span>
               </div>
 
-              <div className="text-center w-full">
-                <div className="h-20 sm:h-28 bg-slate-100 dark:bg-slate-900 rounded-2xl flex items-end justify-center p-1.5">
-                  <div className="w-full h-16 bg-slate-300 dark:bg-slate-700 rounded-xl" />
+              <div className="text-center w-full group/bar cursor-pointer">
+                <div className="h-20 sm:h-28 bg-slate-100 dark:bg-slate-900 rounded-2xl flex items-end justify-center p-1.5 transition-all group-hover/bar:bg-slate-200 dark:group-hover/bar:bg-slate-800">
+                  <div className="w-full h-16 bg-slate-300 dark:bg-slate-700 rounded-xl group-hover/bar:h-20 transition-all duration-300" />
                 </div>
                 <span className="text-[10px] font-mono-code text-slate-400 block mt-1.5">45+ Events</span>
               </div>
 
-              <div className="text-center w-full">
-                <div className="h-24 sm:h-36 bg-indigo-50 dark:bg-indigo-950/40 rounded-2xl flex items-end justify-center p-1.5">
-                  <div className="w-full h-24 bg-indigo-300 dark:bg-indigo-600/70 rounded-xl" />
+              <div className="text-center w-full group/bar cursor-pointer">
+                <div className="h-24 sm:h-36 bg-indigo-50 dark:bg-indigo-950/40 rounded-2xl flex items-end justify-center p-1.5 transition-all group-hover/bar:bg-indigo-100 dark:group-hover/bar:bg-indigo-900/40">
+                  <div className="w-full h-24 bg-indigo-300 dark:bg-indigo-600/70 rounded-xl group-hover/bar:h-28 transition-all duration-300" />
                 </div>
                 <span className="text-[10px] font-mono-code text-indigo-500 block mt-1.5">80+ Projects</span>
               </div>
 
-              <div className="text-center w-full">
-                <div className="h-28 sm:h-44 bg-indigo-600 dark:bg-[#00E5FF] rounded-2xl shadow-lg shadow-indigo-200 dark:shadow-cyan-500/20 flex items-end justify-center p-1.5">
+              <div className="text-center w-full group/bar cursor-pointer">
+                <div className="h-28 sm:h-44 bg-indigo-600 dark:bg-[#00E5FF] rounded-2xl shadow-lg shadow-indigo-200 dark:shadow-cyan-500/20 flex items-end justify-center p-1.5 hover:scale-105 transition-transform duration-300">
                   <div className="w-full h-full bg-white/20 rounded-xl flex items-center justify-center">
                     <TrendingUp className="w-4 h-4 text-white dark:text-black animate-bounce" />
                   </div>
@@ -131,16 +178,16 @@ export const Hero: React.FC<HeroProps> = ({ onOpenJoinModal, onExploreDomains })
                 <span className="text-[10px] font-mono-code font-bold text-indigo-600 dark:text-[#00E5FF] block mt-1.5">1.2k+ Youth</span>
               </div>
 
-              <div className="text-center w-full">
-                <div className="h-24 sm:h-36 bg-slate-100 dark:bg-slate-900 rounded-2xl flex items-end justify-center p-1.5">
-                  <div className="w-full h-20 bg-slate-300 dark:bg-slate-700 rounded-xl" />
+              <div className="text-center w-full group/bar cursor-pointer">
+                <div className="h-24 sm:h-36 bg-slate-100 dark:bg-slate-900 rounded-2xl flex items-end justify-center p-1.5 transition-all group-hover/bar:bg-slate-200 dark:group-hover/bar:bg-slate-800">
+                  <div className="w-full h-20 bg-slate-300 dark:bg-slate-700 rounded-xl group-hover/bar:h-24 transition-all duration-300" />
                 </div>
                 <span className="text-[10px] font-mono-code text-slate-400 block mt-1.5">15+ Univs</span>
               </div>
 
-              <div className="text-center w-full">
-                <div className="h-20 sm:h-28 bg-slate-100 dark:bg-slate-900 rounded-2xl flex items-end justify-center p-1.5">
-                  <div className="w-full h-14 bg-slate-300 dark:bg-slate-700 rounded-xl" />
+              <div className="text-center w-full group/bar cursor-pointer">
+                <div className="h-20 sm:h-28 bg-slate-100 dark:bg-slate-900 rounded-2xl flex items-end justify-center p-1.5 transition-all group-hover/bar:bg-slate-200 dark:group-hover/bar:bg-slate-800">
+                  <div className="w-full h-14 bg-slate-300 dark:bg-slate-700 rounded-xl group-hover/bar:h-18 transition-all duration-300" />
                 </div>
                 <span className="text-[10px] font-mono-code text-slate-400 block mt-1.5">6 Tracks</span>
               </div>
@@ -152,6 +199,13 @@ export const Hero: React.FC<HeroProps> = ({ onOpenJoinModal, onExploreDomains })
 
           {/* Bento Cell 2: Global / Regional Network Node (col-span-12 lg:col-span-4) */}
           <div className="md:col-span-12 lg:col-span-4 bg-slate-900 rounded-[36px] sm:rounded-[44px] p-8 text-white flex flex-col justify-between border border-slate-800 shadow-xl relative overflow-hidden bento-card">
+            
+            {/* Animated Cyber Radar Pulse at top-right */}
+            <div className="absolute top-6 right-6 w-12 h-12 flex items-center justify-center pointer-events-none">
+              <span className="animate-radar-ping absolute inline-flex h-full w-full rounded-full bg-[#00E5FF] opacity-30"></span>
+              <span className="relative inline-flex rounded-full h-3 w-3 bg-[#00E5FF]"></span>
+            </div>
+
             <div className="relative z-10 space-y-2">
               <div className="flex items-center justify-between">
                 <span className="text-slate-400 text-[10px] font-bold uppercase tracking-widest font-mono-code">
@@ -227,7 +281,7 @@ export const Hero: React.FC<HeroProps> = ({ onOpenJoinModal, onExploreDomains })
                 +180% Quarterly Growth
               </p>
               <p className="text-xs text-slate-500 dark:text-slate-400 mt-1 leading-relaxed">
-                Empowering regional builders to surpass production engineering benchmarks.
+                Empowering regional youth and student engineers to surpass production engineering benchmarks.
               </p>
             </div>
 
@@ -238,7 +292,13 @@ export const Hero: React.FC<HeroProps> = ({ onOpenJoinModal, onExploreDomains })
           </div>
 
           {/* Bento Cell 4: Project & Flagship Status (col-span-12 md:col-span-4) */}
-          <div className="md:col-span-4 bg-indigo-50/70 dark:bg-indigo-950/40 rounded-[36px] p-7 sm:p-8 flex flex-col justify-between border border-indigo-100 dark:border-indigo-900/50 bento-card">
+          <div className="md:col-span-4 bg-indigo-50/70 dark:bg-indigo-950/40 rounded-[36px] p-7 sm:p-8 flex flex-col justify-between border border-indigo-100 dark:border-indigo-900/50 bento-card relative overflow-hidden">
+            
+            {/* Subtle animated floating pill */}
+            <div className="absolute top-4 right-4 animate-float-reverse pointer-events-none">
+              <span className="w-2 h-2 rounded-full bg-emerald-400 inline-block animate-ping" />
+            </div>
+
             <div>
               <h2 className="text-indigo-600 dark:text-indigo-400 text-[10px] font-black uppercase tracking-[0.2em] mb-2 font-mono-code">
                 Next Active Cohort
@@ -274,7 +334,7 @@ export const Hero: React.FC<HeroProps> = ({ onOpenJoinModal, onExploreDomains })
                 Capstone Placement
               </p>
               <p className="text-xs text-slate-700 dark:text-slate-300 font-medium leading-snug">
-                Graduates transition to international remote internships and open-source contributions.
+                Graduates transition to international remote internships, software roles, and open-source contributions.
               </p>
             </div>
           </div>
@@ -315,13 +375,16 @@ export const Hero: React.FC<HeroProps> = ({ onOpenJoinModal, onExploreDomains })
 
               <div className="mt-6 flex flex-wrap gap-2 justify-center">
                 <span className="px-2.5 py-1 rounded-full bg-cyan-500/20 text-[#00E5FF] text-[11px] font-mono-code font-semibold">
-                  #PeshawarTech
+                  #nextgennect
                 </span>
                 <span className="px-2.5 py-1 rounded-full bg-purple-500/20 text-purple-300 text-[11px] font-mono-code font-semibold">
-                  #YouthInDeepTech
+                  #techcommunity
                 </span>
                 <span className="px-2.5 py-1 rounded-full bg-emerald-500/20 text-emerald-300 text-[11px] font-mono-code font-semibold">
-                  #EngineeringPakistan
+                  #youthempowerment
+                </span>
+                <span className="px-2.5 py-1 rounded-full bg-blue-500/20 text-blue-300 text-[11px] font-mono-code font-semibold">
+                  #peshawarnextgennect
                 </span>
               </div>
             </div>
