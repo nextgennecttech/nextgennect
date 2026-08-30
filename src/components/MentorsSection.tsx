@@ -11,11 +11,11 @@ import {
   Smartphone,
 } from 'lucide-react';
 
-import jafarAli from '../assets/mentors/jafar.jpg';
-import muhammadAtif from '../assets/mentors/atif.jpg';
-import faizaGhaffar from '../assets/mentors/faiza.jpg';
-import talhaIqbal from '../assets/mentors/talha.jpg';
-import tatheerHussain from '../assets/mentors/tatheer.jpg';
+import jafarImage from '../assets/mentors/jafar.jpg';
+import atifImage from '../assets/mentors/atif.jpg';
+import faizaImage from '../assets/mentors/faiza.jpg';
+import talhaImage from '../assets/mentors/talha.jpg';
+import taheerImage from '../assets/mentors/taheer.jpg';
 
 interface Mentor {
   id: string;
