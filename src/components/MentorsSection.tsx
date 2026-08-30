@@ -1,8 +1,8 @@
 import React from 'react';
 
-import jaffarImage from '../assets/mentors/jaffar.jpg';
 import atifImage from '../assets/mentors/atif.jpg';
 import faizaImage from '../assets/mentors/faiza.jpg';
+import jaffarImage from '../assets/mentors/jaffar.jpg';
 import talhaImage from '../assets/mentors/talha.png';
 import tatheerImage from '../assets/mentors/tatheer.png';
 
