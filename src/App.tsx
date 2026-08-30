@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+
 import { MentorsSection } from './components/MentorsSection';
 import { ThemeProvider } from './context/ThemeContext';
 import { Navbar } from './components/Navbar';
@@ -19,6 +20,7 @@ import {
 } from './components/ApplyEnrollModal';
 import { AdminRecordsModal } from './components/AdminRecordsModal';
 import { NetworkCanvas } from './components/NetworkCanvas';
+
 import {
   TechDomain,
   TrainingCourse,
@@ -27,15 +29,22 @@ import {
 
 export default function App() {
   const [searchModalOpen, setSearchModalOpen] = useState(false);
+
   const [communityModalOpen, setCommunityModalOpen] = useState(false);
+
   const [selectedTrackForModal, setSelectedTrackForModal] =
     useState<TechDomain | null>(null);
 
   const [applyModalOpen, setApplyModalOpen] = useState(false);
+
   const [applyModalType, setApplyModalType] =
     useState<EnrollmentType>('student_course');
-  const [applyCourseId, setApplyCourseId] = useState<string | null>(null);
-  const [applyServiceId, setApplyServiceId] = useState<string | null>(null);
+
+  const [applyCourseId, setApplyCourseId] =
+    useState<string | null>(null);
+
+  const [applyServiceId, setApplyServiceId] =
+    useState<string | null>(null);
 
   const [adminModalOpen, setAdminModalOpen] = useState(false);
 
@@ -66,11 +75,12 @@ export default function App() {
   };
 
   const handleExploreDomains = () => {
-    const el = document.getElementById('domains');
+    const element = document.getElementById('domains');
 
-    if (el) {
-      el.scrollIntoView({
+    if (element) {
+      element.scrollIntoView({
         behavior: 'smooth',
+        block: 'start',
       });
     }
   };
@@ -86,28 +96,28 @@ export default function App() {
         {/* Global Tech Wire Circuit Canvas */}
         <NetworkCanvas />
 
-        {/* Navigation Bar */}
+        {/* Navigation */}
         <Navbar
           onOpenSearch={() => setSearchModalOpen(true)}
           onOpenJoinModal={() => handleOpenJoinModal()}
           onOpenAdmin={() => setAdminModalOpen(true)}
         />
 
-        {/* Main Content */}
+        {/* Main Website Content */}
         <main className="relative">
 
-          {/* Hero */}
+          {/* 1. Hero */}
           <Hero
             onOpenJoinModal={() => handleOpenJoinModal()}
             onExploreDomains={handleExploreDomains}
           />
 
-          {/* Technology Domains */}
+          {/* 2. Technology Domains */}
           <TechDomains
             onJoinTrack={(domain) => handleOpenJoinModal(domain)}
           />
 
-          {/* Courses & Services */}
+          {/* 3. Courses & Services */}
           <CoursesAndServices
             onApplyCourse={handleApplyCourse}
             onRequestService={handleRequestService}
@@ -119,24 +129,26 @@ export default function App() {
             }}
           />
 
-          {/* Mission & Vision */}
+          {/* 4. Mission & Vision */}
           <MissionVision />
 
-          {/* Mentors */}
+          {/* 5. Mentors */}
           <MentorsSection />
 
-          {/* Impact Dashboard */}
+          {/* 6. Impact Dashboard */}
           <ImpactDashboard />
 
-          {/* Events */}
+          {/* 7. Events */}
           <EventsSection />
 
-          {/* Track Finder */}
+          {/* 8. Track Finder */}
           <TrackFinder
-            onSelectTrack={(domain) => handleOpenJoinModal(domain)}
+            onSelectTrack={(domain) =>
+              handleOpenJoinModal(domain)
+            }
           />
 
-          {/* FAQ & Contact */}
+          {/* 9. FAQ & Contact */}
           <FaqContact />
 
         </main>
