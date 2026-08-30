@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+
 import { MentorsSection } from './components/MentorsSection';
 import { ThemeProvider } from './context/ThemeContext';
 import { Navbar } from './components/Navbar';
@@ -13,60 +14,45 @@ import { FaqContact } from './components/FaqContact';
 import { Footer } from './components/Footer';
 import { SearchModal } from './components/SearchModal';
 import { CommunityModal } from './components/CommunityModal';
-import { ApplyEnrollModal, EnrollmentType } from './components/ApplyEnrollModal';
+import {
+  ApplyEnrollModal,
+  EnrollmentType,
+} from './components/ApplyEnrollModal';
 import { AdminRecordsModal } from './components/AdminRecordsModal';
 import { NetworkCanvas } from './components/NetworkCanvas';
-import { TechDomain, TrainingCourse, ClientService } from './types';
 
-<main className="relative">
-
-  <Hero
-    onOpenJoinModal={() => handleOpenJoinModal()}
-    onExploreDomains={handleExploreDomains}
-  />
-
-  <TechDomains
-    onJoinTrack={(domain) => handleOpenJoinModal(domain)}
-  />
-
-  <CoursesAndServices
-    onApplyCourse={handleApplyCourse}
-    onRequestService={handleRequestService}
-    onOpenGeneralModal={() => {
-      setApplyModalType('student_course');
-      setApplyModalOpen(true);
-    }}
-  />
-
-  <MissionVision />
-
-  <MentorsSection />
-
-  <ImpactDashboard />
-
-  <EventsSection />
-
-  <TrackFinder
-    onSelectTrack={(domain) => handleOpenJoinModal(domain)}
-  />
-
-  <FaqContact />
-
-</main>
+import {
+  TechDomain,
+  TrainingCourse,
+  ClientService,
+} from './types';
 
 export default function App() {
+  // Search modal
   const [searchModalOpen, setSearchModalOpen] = useState(false);
+
+  // Community / track modal
   const [communityModalOpen, setCommunityModalOpen] = useState(false);
-  const [selectedTrackForModal, setSelectedTrackForModal] = useState<TechDomain | null>(null);
+  const [selectedTrackForModal, setSelectedTrackForModal] =
+    useState<TechDomain | null>(null);
 
-  // Apply/Enroll modal state
+  // Apply / Enroll modal
   const [applyModalOpen, setApplyModalOpen] = useState(false);
-  const [applyModalType, setApplyModalType] = useState<EnrollmentType>('student_course');
-  const [applyCourseId, setApplyCourseId] = useState<string | null>(null);
-  const [applyServiceId, setApplyServiceId] = useState<string | null>(null);
+  const [applyModalType, setApplyModalType] =
+    useState<EnrollmentType>('student_course');
 
-  // Admin / Student Records Tracker Modal
+  const [applyCourseId, setApplyCourseId] =
+    useState<string | null>(null);
+
+  const [applyServiceId, setApplyServiceId] =
+    useState<string | null>(null);
+
+  // Admin / Student Records Tracker
   const [adminModalOpen, setAdminModalOpen] = useState(false);
+
+  // --------------------------------------------------
+  // Open Join / Community Modal
+  // --------------------------------------------------
 
   const handleOpenJoinModal = (domain?: TechDomain) => {
     if (domain) {
@@ -80,12 +66,20 @@ export default function App() {
     }
   };
 
+  // --------------------------------------------------
+  // Apply for Course
+  // --------------------------------------------------
+
   const handleApplyCourse = (course: TrainingCourse) => {
     setApplyModalType('student_course');
     setApplyCourseId(course.id);
     setApplyServiceId(null);
     setApplyModalOpen(true);
   };
+
+  // --------------------------------------------------
+  // Request Client Service
+  // --------------------------------------------------
 
   const handleRequestService = (service: ClientService) => {
     setApplyModalType('client_service');
@@ -94,78 +88,169 @@ export default function App() {
     setApplyModalOpen(true);
   };
 
+  // --------------------------------------------------
+  // Explore Technology Domains
+  // --------------------------------------------------
+
   const handleExploreDomains = () => {
     const el = document.getElementById('domains');
+
     if (el) {
-      el.scrollIntoView({ behavior: 'smooth' });
+      el.scrollIntoView({
+        behavior: 'smooth',
+      });
     }
   };
+
+  // --------------------------------------------------
+  // Select Domain From Search
+  // --------------------------------------------------
 
   const handleSelectDomainFromSearch = (domain: TechDomain) => {
     handleOpenJoinModal(domain);
   };
 
+  // --------------------------------------------------
+  // APPLICATION
+  // --------------------------------------------------
+
   return (
     <ThemeProvider>
-      <div className="min-h-screen bg-slate-50 dark:bg-[#050816] text-slate-900 dark:text-slate-100 transition-colors duration-300 font-sans selection:bg-[#00E5FF] selection:text-black relative">
-        {/* Global Tech Wire Circuit Canvas (Interactive across all sections) */}
+      <div
+        className="
+          min-h-screen
+          bg-slate-50
+          dark:bg-[#050816]
+          text-slate-900
+          dark:text-slate-100
+          transition-colors
+          duration-300
+          font-sans
+          selection:bg-[#00E5FF]
+          selection:text-black
+          relative
+        "
+      >
+        {/* =====================================================
+            GLOBAL TECH WIRE NETWORK
+            ===================================================== */}
+
         <NetworkCanvas />
 
-        {/* Navigation Bar */}
+        {/* =====================================================
+            NAVIGATION BAR
+            ===================================================== */}
+
         <Navbar
           onOpenSearch={() => setSearchModalOpen(true)}
           onOpenJoinModal={() => handleOpenJoinModal()}
           onOpenAdmin={() => setAdminModalOpen(true)}
         />
 
-        {/* Main Content Sections */}
+        {/* =====================================================
+            MAIN WEBSITE CONTENT
+            ===================================================== */}
+
         <main className="relative">
-          {/* 1. Hero Section with Interactive Tech Wire Physics Canvas */}
+
+          {/* ===================================================
+              1. HERO SECTION
+              =================================================== */}
+
           <Hero
             onOpenJoinModal={() => handleOpenJoinModal()}
             onExploreDomains={handleExploreDomains}
           />
 
-          {/* 2. Technology Domains (6 Specialized Tracks) */}
-          <TechDomains onJoinTrack={(domain) => handleOpenJoinModal(domain)} />
+          {/* ===================================================
+              2. TECHNOLOGY DOMAINS
+              =================================================== */}
 
-          {/* 3. Training Courses & Client Services (Apply & Order Forms) */}
+          <TechDomains
+            onJoinTrack={(domain) =>
+              handleOpenJoinModal(domain)
+            }
+          />
+
+          {/* ===================================================
+              3. TRAINING COURSES & CLIENT SERVICES
+              =================================================== */}
+
           <CoursesAndServices
             onApplyCourse={handleApplyCourse}
             onRequestService={handleRequestService}
             onOpenGeneralModal={() => {
               setApplyModalType('student_course');
+              setApplyCourseId(null);
+              setApplyServiceId(null);
               setApplyModalOpen(true);
             }}
           />
 
-          {/* 4. Mission, Vision, Leadership Team & Core Values */}
+          {/* ===================================================
+              4. MISSION & VISION
+              =================================================== */}
+
           <MissionVision />
 
-          {/* 5. Impact Dashboard (7 Counters, Interactive Growth Chart, Testimonials) */}
+          {/* ===================================================
+              5. MENTORS SECTION
+              =================================================== */}
+
+          <MentorsSection />
+
+          {/* ===================================================
+              6. IMPACT DASHBOARD
+              =================================================== */}
+
           <ImpactDashboard />
 
-          {/* 6. Upcoming Events & Workshops (RSVP & Seat Reservation) */}
+          {/* ===================================================
+              7. EVENTS & WORKSHOPS
+              =================================================== */}
+
           <EventsSection />
 
-          {/* 7. Interactive Track Finder Career Advisor */}
-          <TrackFinder onSelectTrack={(domain) => handleOpenJoinModal(domain)} />
+          {/* ===================================================
+              8. CAREER / TRACK FINDER
+              =================================================== */}
 
-          {/* 8. FAQ & Contact / Partnership Dispatch Form */}
+          <TrackFinder
+            onSelectTrack={(domain) =>
+              handleOpenJoinModal(domain)
+            }
+          />
+
+          {/* ===================================================
+              9. FAQ & CONTACT
+              =================================================== */}
+
           <FaqContact />
+
         </main>
 
-        {/* Comprehensive Footer */}
-        <Footer onOpenAdmin={() => setAdminModalOpen(true)} />
+        {/* =====================================================
+            FOOTER
+            ===================================================== */}
 
-        {/* Global Quick Search Modal */}
+        <Footer
+          onOpenAdmin={() => setAdminModalOpen(true)}
+        />
+
+        {/* =====================================================
+            SEARCH MODAL
+            ===================================================== */}
+
         <SearchModal
           isOpen={searchModalOpen}
           onClose={() => setSearchModalOpen(false)}
           onSelectDomain={handleSelectDomainFromSearch}
         />
 
-        {/* Community & Track Registration Modal */}
+        {/* =====================================================
+            COMMUNITY / TRACK REGISTRATION MODAL
+            ===================================================== */}
+
         <CommunityModal
           isOpen={communityModalOpen}
           onClose={() => {
@@ -175,7 +260,10 @@ export default function App() {
           initialDomain={selectedTrackForModal}
         />
 
-        {/* Direct Course Application & Client Service Request Modal */}
+        {/* =====================================================
+            COURSE / SERVICE APPLICATION MODAL
+            ===================================================== */}
+
         <ApplyEnrollModal
           isOpen={applyModalOpen}
           onClose={() => {
@@ -189,11 +277,15 @@ export default function App() {
           initialDomain={selectedTrackForModal}
         />
 
-        {/* Admin Student Registration & Seat Reservation Tracker Modal */}
+        {/* =====================================================
+            ADMIN RECORDS MODAL
+            ===================================================== */}
+
         <AdminRecordsModal
           isOpen={adminModalOpen}
           onClose={() => setAdminModalOpen(false)}
         />
+
       </div>
     </ThemeProvider>
   );
