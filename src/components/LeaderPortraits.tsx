@@ -1,9 +1,9 @@
 
 import React from 'react';
 
-import aliyanShah from 'src/assets/leaders/aliyan.jpg';
-import muhammadAtif from 'src/assets/leaders/atif.jpg';
-import fatimaZahra from 'src/assets/leaders/fatima.jpg';
+import aliyanShah from '../assets/leaders/aliyan.jpg';
+import muhammadAtif from '../assets/leaders/atif.jpg';
+import fatimaZahra from '../assets/leaders/fatima.jpg';
 
 interface LeaderPortraitProps {
   id: 'aliyan-shah' | 'muhammad-atif' | 'fatima-zahra' | string;
