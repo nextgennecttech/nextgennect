@@ -1,133 +1,65 @@
 import React from 'react';
 
-import {
-  ArrowUpRight,
-  Award,
-  BrainCircuit,
-  Globe,
-  Linkedin,
-  Network,
-  ShieldCheck,
-  Smartphone,
-} from 'lucide-react';
-
-import jafarImage from '../assets/mentors/jaffar.png';
-import atifImage from '../assets/mentors/atif.png';
-import faizaImage from '../assets/mentors/faiza.png';
+import jaffarImage from '../assets/mentors/jaffar.jpg';
+import atifImage from '../assets/mentors/atif.jpg';
+import faizaImage from '../assets/mentors/faiza.jpg';
 import talhaImage from '../assets/mentors/talha.png';
-import taheerImage from '../assets/mentors/taheer.png';
+import tatheerImage from '../assets/mentors/tatheer.png';
 
 interface Mentor {
-  id: string;
   name: string;
+  role: string;
   domain: string;
-  title: string;
-  shortBio: string;
-  expertise: string[];
+  description: string;
   image: string;
-  linkedin: string;
-  icon: React.ElementType;
+  linkedin?: string;
 }
 
-const MENTORS: Mentor[] = [
+const mentors: Mentor[] = [
   {
-    id: 'jafar-ali',
-    name: 'Jafar Ali',
+    name: 'Jaffar Ali',
+    role: 'Cybersecurity Instructor',
     domain: 'Cybersecurity',
-    title: 'Cybersecurity Instructor & Ethical Hacker',
-    shortBio:
-      'Cybersecurity professional and certified ethical hacker focused on practical security, vulnerability research, penetration testing, information security and security awareness.',
-    expertise: [
-      'Cybersecurity',
-      'Ethical Hacking',
-      'Penetration Testing',
-      'Bug Bounty',
-      'Vulnerability Research',
-      'Network Security',
-    ],
-    image: jafarAli,
+    description:
+      'Cybersecurity professional and instructor focused on security awareness, ethical hacking, network security, and practical cybersecurity skills.',
+    image: jaffarImage,
     linkedin: 'https://pk.linkedin.com/in/jafarali-cybersecurity',
-    icon: ShieldCheck,
   },
-
   {
-    id: 'muhammad-atif',
     name: 'Muhammad Atif',
+    role: 'Network Expert',
     domain: 'Networking',
-    title: 'Network Expert',
-    shortBio:
-      'Network technology expert supporting learners with practical knowledge of networking, infrastructure, routing, switching and real-world network operations.',
-    expertise: [
-      'Computer Networking',
-      'Routing',
-      'Switching',
-      'Network Infrastructure',
-      'Network Troubleshooting',
-      'IT Infrastructure',
-    ],
-    image: muhammadAtif,
+    description:
+      'Networking professional with practical experience in network infrastructure, routing, switching, network security, and enterprise technologies.',
+    image: atifImage,
     linkedin: 'https://pk.linkedin.com/in/muhammadatif2000',
-    icon: Network,
   },
-
   {
-    id: 'faiza-ghaffar',
     name: 'Faiza Ghaffar',
+    role: 'AI Expert',
     domain: 'Artificial Intelligence',
-    title: 'AI Expert & Instructor',
-    shortBio:
-      'Artificial Intelligence specialist focused on AI automation, modern AI tools, practical learning and helping students understand and apply emerging AI technologies.',
-    expertise: [
-      'Artificial Intelligence',
-      'AI Automation',
-      'AI Tools',
-      'LLMs',
-      'AI Agents',
-      'Machine Learning',
-    ],
-    image: faizaGhaffar,
+    description:
+      'AI-focused professional helping learners understand artificial intelligence, machine learning, modern AI technologies, and practical applications.',
+    image: faizaImage,
     linkedin: 'https://pk.linkedin.com/in/faiza-ghaffar-31a995376',
-    icon: BrainCircuit,
   },
-
   {
-    id: 'talha-iqbal',
     name: 'Talha Iqbal',
-    domain: 'Mobile App Development',
-    title: 'Flutter & Android Expert',
-    shortBio:
-      'Flutter developer and trainer specializing in cross-platform mobile development, Dart, Firebase, APIs, responsive interfaces and practical application development.',
-    expertise: [
-      'Flutter',
-      'Dart',
-      'Android Development',
-      'Firebase',
-      'API Integration',
-      'Mobile UI/UX',
-    ],
-    image: talhaIqbal,
+    role: 'Flutter & Android Expert',
+    domain: 'Mobile Development',
+    description:
+      'Mobile application developer specializing in Flutter and Android development with a focus on building practical and modern applications.',
+    image: talhaImage,
     linkedin: 'https://pk.linkedin.com/in/talha-iqbal-689467280',
-    icon: Smartphone,
   },
-
   {
-    id: 'tatheer-hussain',
-    name: 'S Tatheer Hussain',
+    name: 'Tatheer Hussain',
+    role: 'Web Development Expert',
     domain: 'Web Development',
-    title: 'Web Development Expert & Instructor',
-    shortBio:
-      'Software engineer and web-development instructor focused on modern web development, application development, SaaS, software engineering and practical technical education.',
-    expertise: [
-      'Web Development',
-      'Full-Stack Development',
-      'SaaS',
-      'Software Engineering',
-      'Application Development',
-      'Database Development',
-    ],
-    image: tatheerHussain,
+    description:
+      'Web development professional focused on modern web technologies, responsive interfaces, frontend development, and practical web solutions.',
+    image: tatheerImage,
     linkedin: 'https://pk.linkedin.com/in/tatheer-hussain',
-    icon: Globe,
   },
 ];
 
@@ -135,179 +67,102 @@ export const MentorsSection: React.FC = () => {
   return (
     <section
       id="mentors"
-      className="py-24 relative overflow-hidden bg-transparent"
+      className="relative py-24 px-4 sm:px-6 lg:px-8 overflow-hidden"
     >
-      {/* Background technology glow */}
-      <div className="absolute top-20 left-[-120px] w-96 h-96 bg-cyan-500/5 rounded-full blur-3xl pointer-events-none" />
+      {/* Background glow */}
+      <div className="absolute inset-0 pointer-events-none">
+        <div className="absolute top-20 left-1/4 w-72 h-72 bg-cyan-500/10 rounded-full blur-3xl" />
+        <div className="absolute bottom-10 right-1/4 w-72 h-72 bg-blue-600/10 rounded-full blur-3xl" />
+      </div>
 
-      <div className="absolute bottom-0 right-[-120px] w-96 h-96 bg-indigo-500/5 rounded-full blur-3xl pointer-events-none" />
-
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      <div className="relative max-w-7xl mx-auto">
 
         {/* Section Header */}
-        <div className="text-center max-w-3xl mx-auto mb-14">
+        <div className="text-center mb-16">
 
-          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-cyan-50 dark:bg-cyan-500/10 text-cyan-700 dark:text-[#00E5FF] text-[10px] font-mono-code font-bold uppercase tracking-[0.2em] border border-cyan-200 dark:border-cyan-500/20 mb-4">
-
-            <Award className="w-4 h-4" />
-
-            <span>INDUSTRY MENTORSHIP NETWORK</span>
-
+          <div className="inline-flex items-center gap-2 px-4 py-2 mb-5 rounded-full border border-cyan-400/30 bg-cyan-400/10 text-cyan-400 text-sm font-semibold">
+            <span className="w-2 h-2 rounded-full bg-cyan-400 animate-pulse" />
+            OUR EXPERT MENTORS
           </div>
 
-          <h2 className="text-3xl sm:text-5xl font-display font-extrabold text-slate-900 dark:text-white tracking-tight">
-
+          <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-slate-900 dark:text-white">
             Learn From{' '}
-
-            <span className="text-indigo-600 dark:text-[#00E5FF]">
+            <span className="text-cyan-400">
               Industry Experts
             </span>
-
           </h2>
 
-          <p className="text-base sm:text-lg text-slate-600 dark:text-slate-400 mt-4 leading-relaxed">
-
-            Connect with experienced professionals across cybersecurity,
-            networking, artificial intelligence, mobile development and
-            modern web technologies.
-
+          <p className="max-w-3xl mx-auto mt-6 text-lg text-slate-600 dark:text-slate-400">
+            Connect with experienced professionals and learn practical,
+            industry-focused skills across cybersecurity, networking,
+            artificial intelligence, mobile development, and web development.
           </p>
 
         </div>
 
         {/* Mentor Cards */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
 
-          {MENTORS.map((mentor) => {
-            const Icon = mentor.icon;
+          {mentors.map((mentor) => (
+            <article
+              key={mentor.name}
+              className="group relative overflow-hidden rounded-3xl border border-slate-200 dark:border-white/10 bg-white/80 dark:bg-slate-900/70 backdrop-blur-xl shadow-xl transition-all duration-500 hover:-translate-y-2 hover:border-cyan-400/40"
+            >
 
-            return (
-              <article
-                key={mentor.id}
-                className="group relative overflow-hidden rounded-[32px] bg-white dark:bg-[#0A0F1E] border border-slate-200/80 dark:border-slate-800/80 shadow-sm hover:shadow-2xl hover:border-cyan-400/40 dark:hover:border-cyan-400/40 transition-all duration-300"
-              >
+              {/* Photo */}
+              <div className="relative h-80 overflow-hidden bg-slate-100 dark:bg-slate-800">
 
-                {/* Photo */}
-                <div className="relative h-[330px] overflow-hidden bg-slate-900">
+                <img
+                  src={mentor.image}
+                  alt={`${mentor.name} - ${mentor.role}`}
+                  className="absolute inset-0 w-full h-full object-cover object-center transition-transform duration-700 group-hover:scale-105"
+                  loading="lazy"
+                />
 
-                  <img
-                    src={mentor.image}
-                    alt={`${mentor.name} - ${mentor.domain} mentor`}
-                    className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700"
-                    loading="lazy"
-                  />
+                {/* Image overlay */}
+                <div className="absolute inset-0 bg-gradient-to-t from-slate-950/90 via-slate-950/20 to-transparent" />
 
-                  {/* Image gradient */}
-                  <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/20 to-transparent pointer-events-none" />
-
-                  {/* Domain badge */}
-                  <div className="absolute top-5 left-5">
-
-                    <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-slate-950/80 backdrop-blur-md border border-cyan-400/30 text-[#00E5FF] font-mono-code text-[10px] font-bold uppercase tracking-wider">
-
-                      <Icon className="w-3.5 h-3.5" />
-
-                      {mentor.domain}
-
-                    </div>
-
-                  </div>
-
-                  {/* Mentor name overlay */}
-                  <div className="absolute bottom-5 left-5 right-5">
-
-                    <h3 className="text-xl sm:text-2xl font-display font-extrabold text-white">
-
-                      {mentor.name}
-
-                    </h3>
-
-                    <p className="text-xs sm:text-sm text-cyan-200 font-mono-code font-semibold mt-1">
-
-                      {mentor.title}
-
-                    </p>
-
-                  </div>
-
+                {/* Domain */}
+                <div className="absolute top-5 left-5">
+                  <span className="inline-flex px-3 py-1.5 rounded-full bg-cyan-400/90 text-slate-950 text-xs font-bold shadow-lg">
+                    {mentor.domain}
+                  </span>
                 </div>
 
-                {/* Content */}
-                <div className="p-6">
+              </div>
 
-                  <p className="text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
+              {/* Content */}
+              <div className="p-6">
 
-                    {mentor.shortBio}
+                <h3 className="text-2xl font-bold text-slate-900 dark:text-white">
+                  {mentor.name}
+                </h3>
 
-                  </p>
+                <p className="mt-1 text-cyan-400 font-semibold">
+                  {mentor.role}
+                </p>
 
-                  {/* Expertise */}
-                  <div className="flex flex-wrap gap-2 mt-5">
+                <p className="mt-4 text-sm leading-6 text-slate-600 dark:text-slate-400">
+                  {mentor.description}
+                </p>
 
-                    {mentor.expertise.map((skill) => (
-                      <span
-                        key={skill}
-                        className="px-2.5 py-1 rounded-full bg-slate-100 dark:bg-slate-800/90 text-[10px] font-mono-code text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-slate-700"
-                      >
-                        {skill}
-                      </span>
-                    ))}
+                {/* LinkedIn */}
+                {mentor.linkedin && (
+                  <a
+                    href={mentor.linkedin}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-2 mt-6 px-4 py-2.5 rounded-xl border border-cyan-400/30 bg-cyan-400/10 text-cyan-400 font-semibold text-sm transition-all duration-300 hover:bg-cyan-400 hover:text-slate-950"
+                  >
+                    View LinkedIn
+                    <span aria-hidden="true">↗</span>
+                  </a>
+                )}
 
-                  </div>
+              </div>
 
-                  {/* Footer */}
-                  <div className="mt-6 pt-5 border-t border-slate-200 dark:border-slate-800 flex items-center justify-between">
-
-                    <div className="flex items-center gap-2 text-[10px] font-mono-code uppercase tracking-wider text-slate-400">
-
-                      <div className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
-
-                      <span>Mentor Network</span>
-
-                    </div>
-
-                    <a
-                      href={mentor.linkedin}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="inline-flex items-center gap-2 px-3 py-2 rounded-xl bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-cyan-300 hover:bg-[#00E5FF] hover:text-slate-950 transition-all duration-200"
-                      aria-label={`View ${mentor.name} on LinkedIn`}
-                    >
-
-                      <Linkedin className="w-4 h-4" />
-
-                      <span className="text-[10px] font-mono-code font-bold">
-                        LinkedIn
-                      </span>
-
-                      <ArrowUpRight className="w-3.5 h-3.5" />
-
-                    </a>
-
-                  </div>
-
-                </div>
-
-              </article>
-            );
-          })}
-
-        </div>
-
-        {/* Bottom message */}
-        <div className="mt-12 text-center">
-
-          <div className="inline-flex items-center gap-3 px-5 py-3 rounded-2xl bg-white/70 dark:bg-[#0A0F1E]/80 border border-slate-200 dark:border-slate-800 shadow-sm">
-
-            <Network className="w-5 h-5 text-[#00E5FF]" />
-
-            <span className="text-xs sm:text-sm font-mono-code text-slate-600 dark:text-slate-300">
-
-              Industry knowledge → Practical skills → Real-world projects
-
-            </span>
-
-          </div>
+            </article>
+          ))}
 
         </div>
 
@@ -315,3 +170,5 @@ export const MentorsSection: React.FC = () => {
     </section>
   );
 };
+
+export default MentorsSection;
