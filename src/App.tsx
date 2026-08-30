@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { MentorsSection } from './components/MentorsSection';
 import { ThemeProvider } from './context/ThemeContext';
 import { Navbar } from './components/Navbar';
 import { Hero } from './components/Hero';
