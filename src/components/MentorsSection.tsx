@@ -11,7 +11,7 @@ import {
   Smartphone,
 } from 'lucide-react';
 
-import jafarImage from '../assets/mentors/jafar.jpg';
+import jafarImage from '../assets/mentors/jaffar.jpg';
 import atifImage from '../assets/mentors/atif.jpg';
 import faizaImage from '../assets/mentors/faiza.jpg';
 import talhaImage from '../assets/mentors/talha.jpg';
