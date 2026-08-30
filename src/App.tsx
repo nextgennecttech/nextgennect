@@ -1,12 +1,13 @@
 import React, { useState } from 'react';
 
+import { MissionVision } from './components/MissionVision';
 import { MentorsSection } from './components/MentorsSection';
+import { ImpactDashboard } from './components/ImpactDashboard';
 import { ThemeProvider } from './context/ThemeContext';
 import { Navbar } from './components/Navbar';
 import { Hero } from './components/Hero';
 import { TechDomains } from './components/TechDomains';
 import { CoursesAndServices } from './components/CoursesAndServices';
-import { MissionVision } from './components/MissionVision';
 import { ImpactDashboard } from './components/ImpactDashboard';
 import { EventsSection } from './components/EventsSection';
 import { TrackFinder } from './components/TrackFinder';
