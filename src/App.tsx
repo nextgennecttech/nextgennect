@@ -18,6 +18,42 @@ import { AdminRecordsModal } from './components/AdminRecordsModal';
 import { NetworkCanvas } from './components/NetworkCanvas';
 import { TechDomain, TrainingCourse, ClientService } from './types';
 
+<main className="relative">
+
+  <Hero
+    onOpenJoinModal={() => handleOpenJoinModal()}
+    onExploreDomains={handleExploreDomains}
+  />
+
+  <TechDomains
+    onJoinTrack={(domain) => handleOpenJoinModal(domain)}
+  />
+
+  <CoursesAndServices
+    onApplyCourse={handleApplyCourse}
+    onRequestService={handleRequestService}
+    onOpenGeneralModal={() => {
+      setApplyModalType('student_course');
+      setApplyModalOpen(true);
+    }}
+  />
+
+  <MissionVision />
+
+  <MentorsSection />
+
+  <ImpactDashboard />
+
+  <EventsSection />
+
+  <TrackFinder
+    onSelectTrack={(domain) => handleOpenJoinModal(domain)}
+  />
+
+  <FaqContact />
+
+</main>
+
 export default function App() {
   const [searchModalOpen, setSearchModalOpen] = useState(false);
   const [communityModalOpen, setCommunityModalOpen] = useState(false);
